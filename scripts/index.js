@@ -86,8 +86,7 @@ const renderGameField = (gameField) => {
     ) {
       console.log(carrentColum);
       const carrentColumElem = document.createElement('button');
-      carrentColumElem.innerHTML =
-        gameField[carrentRow][carrentColum];
+      carrentColumElem.innerHTML = gameField[carrentRow][carrentColum];
       carrentColumElem.dataset.row = carrentRow;
       carrentColumElem.dataset.colum = carrentColum;
       carrentColumElem.classList.add('game-field__cell');
