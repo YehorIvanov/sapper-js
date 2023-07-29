@@ -1,7 +1,11 @@
 /* eslint-disable no-console */
 // Создание массива размером 10 на 10, заполненного значениями null
 
-const getNewArray = (widthField, heightField, numberOfBombs) => {
+const getNewGameField = (
+  widthField = 10,
+  heightField = 10,
+  numberOfBombs = 10,
+) => {
   const array = new Array(widthField)
     .fill(null)
     .map(() => new Array(heightField).fill(null));
@@ -18,23 +22,8 @@ const getNewArray = (widthField, heightField, numberOfBombs) => {
   }
   return array;
 };
-// const array = new Array(10)
-//   .fill(null)
-//   .map(() => new Array(10).fill(null));
 
-// // Вставка 10 случайных символов '*' в массив
-// for (let i = 0; i < 10; i += 1) {
-//   let x;
-//   let y;
-//   do {
-//     x = Math.floor(Math.random() * 10);
-//     y = Math.floor(Math.random() * 10);
-//   } while (array[x][y] === '*');
-//   array[x][y] = '*';
-// }
-
-// Добавление чисел в таблицу для указания количества соседних ячеек, содержащих символ '*'
-function addNumbers(array) {
+function addNumbersToGameField(array) {
   const x = array.length;
   const y = array[0].length;
 
@@ -67,12 +56,54 @@ function addNumbers(array) {
   return array;
 }
 
-// Вызов функции addNumbers() для добавления чисел в таблицу
-const result = addNumbers(getNewArray(10, 10, 10));
+const logGameFieldToConsole = (gameField) => {
+  console.log('\n');
+  gameField.forEach((line) => {
+    console.log(line.reduce((acc, cell) => `${acc}| ${cell} `, ''));
+  });
+};
 
-result.forEach((line) => {
-  console.log(line.reduce((acc, cell) => `${acc}| ${cell} `, ''));
-});
+const renderGameField = (gameField) => {
+  console.log('renderGameField');
+  const numberOfRows = gameField.length;
+  const numberOfColums = gameField[0].length;
+  const gameFieldElem = document.querySelector('.game__field');
+  for (
+    let carrentRow = 0;
+    carrentRow < numberOfRows;
+    carrentRow += 1
+  ) {
+    console.log(carrentRow);
+    const carrentRowElem = document.createElement('div');
+    carrentRowElem.dataset.row = carrentRow;
+    carrentRowElem.classList.add('game-field__row');
+    carrentRowElem.innerHTML = carrentRow;
+
+    for (
+      let carrentColum = 0;
+      carrentColum < numberOfColums;
+      carrentColum += 1
+    ) {
+      console.log(carrentColum);
+      const carrentColumElem = document.createElement('button');
+      carrentColumElem.innerHTML =
+        gameField[carrentRow][carrentColum];
+      carrentColumElem.dataset.row = carrentRow;
+      carrentColumElem.dataset.colum = carrentColum;
+      carrentColumElem.classList.add('game-field__cell');
+      carrentRowElem.append(carrentColumElem);
+    }
+
+    gameFieldElem.append(carrentRowElem);
+  }
+
+  console.log(gameFieldElem, numberOfRows, numberOfColums);
+};
+
+const gameField = addNumbersToGameField(getNewGameField());
+
+logGameFieldToConsole(gameField);
+renderGameField(gameField);
 
 // Вывод результата в консоль
 // console.log(result);
