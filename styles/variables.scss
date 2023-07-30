@@ -1,0 +1,22 @@
+$font-size-maim: 18px;
+$font-size-low: $font-size-maim * 0.75;
+$font-size-hight: $font-size-maim * 1.25;
+
+$background-color-main: silver;
+$background-window-header: -webkit-linear-gradient(
+  left,
+  #08216b,
+  #a5cef7
+);
+
+$color-white: #fff;
+
+$quarter-size: $font-size-maim / 4;
+$half-size: $font-size-maim / 2;
+$double-size: $font-size-maim * 2;
+
+$border-radius-main: 2px;
+
+$border-width-main: 3px;
+$border-color-dark: #424242;
+$border-color-light: $color-white;

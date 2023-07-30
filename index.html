@@ -12,9 +12,15 @@
   <body class="page">
     <section class="window">
       <header class="header">Sapper</header>
-      <nav class="navigation">
-        <button>Game</button>
-        <button>Help</button>
+      <nav class="navbar">
+        <ul class="navbar__nav">
+          <li class="navbar__item">
+            <a class="navbar__link" href="#">Game</a>
+          </li>
+          <li class="navbar__item">
+            <a class="navbar__link" href="#">Help</a>
+          </li>
+        </ul>
       </nav>
       <div class="game">
         <div class="game__bar">
@@ -22,8 +28,7 @@
           <button class="game-bar__smile">:)</button>
           <div class="game-bar__time">Time</div>
         </div>
-        <div class="game__field">
-        </div>
+        <div class="game__field game-field"></div>
       </div>
     </section>
 

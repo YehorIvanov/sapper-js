@@ -1,4 +1,5 @@
 @import 'variables.scss';
+@import 'common.scss';
 
 .page {
   display: flex;
@@ -6,27 +7,117 @@
   justify-content: center;
   align-items: center;
 }
+
 .window {
-  background-color: #c0c0c0;
-  border: 1px solid;
+  //   width: 300px;
+
+  border: solid;
+  border-width: 2px;
+  border-bottom-color: $border-color-dark;
+  border-right-color: $border-color-dark;
+  border-left-color: $border-color-light;
+  border-top-color: $border-color-light;
+  background: silver;
+  color: #212529;
 }
 .header {
-  border: 1px solid;
-  height: 18px;
+  //   border: 1px solid;
+  // height: 18px;
+  height: 22px;
+  background: -webkit-linear-gradient(left, #08216b, #a5cef7);
+  color: #fff;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  //   padding-top: 2px;
+  //   padding-bottom: 1px;
+  padding: 2px;
+  text-align: left;
 }
-.navigation {
-  border: 1px solid;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+.navbar {
+  background: silver;
+  margin: 0;
+  border: 1px outset $color-white;
+  height: 22px;
+  padding: 0 6px;
+  color: #212529;
+  &__nav {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  &__item {
+  }
+  &__link {
+    text-decoration: none;
+    display: inline-block;
+    padding-right: 9px;
+    color: #212529;
+  }
 }
 .game {
+  margin: $half-size;
+  margin-top: none;
+  border-style: outset;
+  border-width: 3px;
+  border-bottom-color: $border-color-dark;
+  border-right-color: $border-color-dark;
+  border-left-color: $border-color-light;
+  border-top-color: $border-color-light;
   &__bar {
-    border: 1px solid;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 
+    height: $double-size;
+
+    margin: $half-size;
+    border-style: inset;
+    border-width: 3px;
+    border-top-color: $border-color-dark;
+    border-left-color: $border-color-dark;
+    border-right-color: $border-color-light;
+    border-bottom-color: $border-color-light;
+  }
+  .game-bar {
+    &__smile {
+      width: $font-size-hight;
+      height: $font-size-hight;
+    }
+  }
+  .game-field {
+    margin: $half-size;
+    border-style: outset;
+    border: solid;
+    border-width: 3px;
+    border-top-color: $border-color-dark;
+    border-left-color: $border-color-dark;
+    border-right-color: $border-color-light;
+    border-bottom-color: $border-color-light;
+
+    &__row {
+    }
+    &__box {
+      height: $font-size-hight;
+      width: $font-size-hight;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      border-style: outset;
+      border: solid;
+      border-width: 3px;
+      border-bottom-color: $border-color-dark;
+      border-right-color: $border-color-dark;
+      border-left-color: $border-color-light;
+      border-top-color: $border-color-light;
+      //   display: inline-block;
+    }
   }
 }
 .content {

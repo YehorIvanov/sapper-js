@@ -64,7 +64,7 @@ const logGameFieldToConsole = (gameField) => {
 };
 
 const renderGameField = (gameField) => {
-  console.log('renderGameField');
+  // console.log('renderGameField');
   const numberOfRows = gameField.length;
   const numberOfColums = gameField[0].length;
   const gameFieldElem = document.querySelector('.game__field');
@@ -73,7 +73,7 @@ const renderGameField = (gameField) => {
     carrentRow < numberOfRows;
     carrentRow += 1
   ) {
-    console.log(carrentRow);
+    // console.log(carrentRow);
     const carrentRowElem = document.createElement('div');
     carrentRowElem.dataset.row = carrentRow;
     carrentRowElem.classList.add('game-field__row');
@@ -83,12 +83,12 @@ const renderGameField = (gameField) => {
       carrentColum < numberOfColums;
       carrentColum += 1
     ) {
-      console.log(carrentColum);
-      const carrentColumElem = document.createElement('button');
+      // console.log(carrentColum);
+      const carrentColumElem = document.createElement('div');
       carrentColumElem.innerHTML = gameField[carrentRow][carrentColum];
       carrentColumElem.dataset.row = carrentRow;
       carrentColumElem.dataset.colum = carrentColum;
-      carrentColumElem.classList.add('game-field__cell');
+      carrentColumElem.classList.add('game-field__box');
       carrentRowElem.append(carrentColumElem);
     }
 
