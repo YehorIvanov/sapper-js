@@ -77,7 +77,6 @@ const renderGameField = (gameField) => {
     const carrentRowElem = document.createElement('div');
     carrentRowElem.dataset.row = carrentRow;
     carrentRowElem.classList.add('game-field__row');
-    carrentRowElem.innerHTML = carrentRow;
 
     for (
       let carrentColum = 0;
