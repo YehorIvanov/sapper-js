@@ -1,6 +1,8 @@
 html {
   position: relative;
   min-height: 100%;
+  box-sizing: border-box;
+  font-size: 18px;
 }
 
 body {
@@ -237,9 +239,13 @@ button:active {
   border-right-color: #fff;
   border-bottom-color: #fff;
 }
+.game .game-field__row {
+  display: flex;
+}
 .game .game-field__box {
   height: 22.5px;
   width: 22.5px;
+  font-size: 13.5px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -250,6 +256,9 @@ button:active {
   border-right-color: #424242;
   border-left-color: #fff;
   border-top-color: #fff;
+}
+.game .game-field__box-open {
+  border: 3px solid silver;
 }
 
 /*# sourceMappingURL=styles.css.map */

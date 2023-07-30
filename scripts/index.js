@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-console */
 // Создание массива размером 10 на 10, заполненного значениями null
 
@@ -47,7 +48,7 @@ function addNumbersToGameField(array) {
         if (i < x - 1 && j < y - 1 && array[i + 1][j + 1] === '*') {
           count += 1;
         }
-        // eslint-disable-next-line no-param-reassign
+
         array[i][j] = count;
       }
     }
@@ -63,11 +64,19 @@ const logGameFieldToConsole = (gameField) => {
   });
 };
 
+const onBoxClick = (event) => {
+  console.log(event.target.dataset.row, event.target.dataset.colum);
+  event.target.classList.add('game-field__box-open');
+  // eslint-disable-next-line no-use-before-define
+  event.target.innerHTML = gameField[event.target.dataset.row][event.target.dataset.colum];
+};
+
 const renderGameField = (gameField) => {
   // console.log('renderGameField');
   const numberOfRows = gameField.length;
   const numberOfColums = gameField[0].length;
   const gameFieldElem = document.querySelector('.game__field');
+  gameFieldElem.addEventListener('click', onBoxClick);
   for (
     let carrentRow = 0;
     carrentRow < numberOfRows;
@@ -85,7 +94,10 @@ const renderGameField = (gameField) => {
     ) {
       // console.log(carrentColum);
       const carrentColumElem = document.createElement('div');
-      carrentColumElem.innerHTML = gameField[carrentRow][carrentColum];
+      // if (gameField[carrentRow][carrentColum]) {
+      //   carrentColumElem.innerHTML =
+      //     gameField[carrentRow][carrentColum];
+      // }
       carrentColumElem.dataset.row = carrentRow;
       carrentColumElem.dataset.colum = carrentColum;
       carrentColumElem.classList.add('game-field__box');

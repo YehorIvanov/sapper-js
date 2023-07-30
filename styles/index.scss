@@ -100,10 +100,13 @@
     border-bottom-color: $border-color-light;
 
     &__row {
+      //   height: $font-size-hight + ($border-width-main * 2);
+      display: flex;
     }
     &__box {
       height: $font-size-hight;
       width: $font-size-hight;
+      font-size: $font-size-low;
 
       display: inline-flex;
       align-items: center;
@@ -117,6 +120,9 @@
       border-left-color: $border-color-light;
       border-top-color: $border-color-light;
       //   display: inline-block;
+      &-open {
+        border: 3px solid $background-color-main;
+      }
     }
   }
 }
