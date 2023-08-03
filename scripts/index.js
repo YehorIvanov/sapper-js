@@ -1,17 +1,30 @@
+/* eslint-disable function-paren-newline */
+/* eslint-disable implicit-arrow-linebreak */
+/* eslint-disable default-case */
+/* eslint-disable import/extensions */
+/* eslint-disable operator-linebreak */
+/* eslint-disable no-use-before-define */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-console */
-// Создание массива размером 10 на 10, заполненного значениями null
+// eslint-disable-next-line import/extensions
+import { getItem, setItem } from './storage.js';
+// eslint-disable-next-line import/extensions
+import { getNeighboringBoxes } from './getNeighboringBoxes.js';
+import { openEmptyBoxes } from './openEmptyBoxes.js';
 
 const getNewGameField = (
   widthField = 10,
   heightField = 10,
-  numberOfBombs = 10,
+  numberOfBombs = 15,
 ) => {
-  const array = new Array(widthField)
-    .fill(null)
-    .map(() => new Array(heightField).fill(null));
+  setItem('widthField', widthField);
+  setItem('heightField', heightField);
+  setItem('numberOfBombs', numberOfBombs);
 
-  // Вставка 10 случайных символов '*' в массив
+  const array = new Array(heightField)
+    .fill(null)
+    .map(() => new Array(widthField).fill(null));
+
   for (let i = 0; i < numberOfBombs; i += 1) {
     let xLoc;
     let yLoc;
@@ -21,43 +34,30 @@ const getNewGameField = (
     } while (array[xLoc][yLoc] === '*');
     array[xLoc][yLoc] = '*';
   }
-  return array;
+
+  setItem('gameField', array);
+  addNumbersToGameField();
 };
 
-function addNumbersToGameField(array) {
-  const x = array.length;
-  const y = array[0].length;
-
-  for (let i = 0; i < x; i += 1) {
-    for (let j = 0; j < y; j += 1) {
-      if (array[i][j] !== '*') {
-        let count = 0;
-        if (i > 0 && j > 0 && array[i - 1][j - 1] === '*') {
-          count += 1;
-        }
-        if (i > 0 && array[i - 1][j] === '*') count += 1;
-        if (i > 0 && j < y - 1 && array[i - 1][j + 1] === '*') {
-          count += 1;
-        }
-        if (j > 0 && array[i][j - 1] === '*') count += 1;
-        if (j < y - 1 && array[i][j + 1] === '*') count += 1;
-        if (i < x - 1 && j > 0 && array[i + 1][j - 1] === '*') {
-          count += 1;
-        }
-        if (i < x - 1 && array[i + 1][j] === '*') count += 1;
-        if (i < x - 1 && j < y - 1 && array[i + 1][j + 1] === '*') {
-          count += 1;
-        }
-
-        array[i][j] = count;
+function addNumbersToGameField() {
+  console.log('1');
+  const gameField = getItem('gameField');
+  gameField.forEach((row, rowNumber) =>
+    row.forEach((box, boxNumber) => {
+      if (box !== '*') {
+        gameField[rowNumber][boxNumber] = getNeighboringBoxes(
+          rowNumber,
+          boxNumber,
+          '*',
+        ).length;
       }
-    }
-  }
-
-  return array;
+    }),
+  );
+  setItem('gameField', gameField);
 }
 
-const logGameFieldToConsole = (gameField) => {
+const logGameFieldToConsole = () => {
+  const gameField = getItem('gameField');
   console.log('\n');
   gameField.forEach((line) => {
     console.log(line.reduce((acc, cell) => `${acc}| ${cell} `, ''));
@@ -65,23 +65,62 @@ const logGameFieldToConsole = (gameField) => {
 };
 
 const onBoxClick = (event) => {
+  const gameField = getItem('gameField');
   console.log(event.target.dataset.row, event.target.dataset.colum);
   event.target.classList.add('game-field__box-open');
-  // eslint-disable-next-line no-use-before-define
-  event.target.innerHTML = gameField[event.target.dataset.row][event.target.dataset.colum];
+
+  if (!gameField[event.target.dataset.row][event.target.dataset.colum]) {
+    setItem('callStackTimeControl', new Date().getTime());
+    openEmptyBoxes(event.target.dataset.row, event.target.dataset.colum);
+  } else {
+    event.target.innerHTML =
+      gameField[event.target.dataset.row][event.target.dataset.colum];
+    switch (gameField[event.target.dataset.row][event.target.dataset.colum]) {
+      case '*':
+        event.target.style.backgroundColor = 'red';
+        break;
+      case 1:
+        event.target.style.color = 'blue';
+        break;
+      case 2:
+        event.target.style.color = 'green';
+        break;
+      case 3:
+        event.target.style.color = 'red';
+        break;
+      case 4:
+        event.target.style.color = 'darkblue';
+        break;
+      case 5:
+        event.target.style.color = 'darkred';
+        break;
+      case 6:
+        event.target.style.color = 'darkgreen';
+        break;
+      case 7:
+        event.target.style.color = 'purple';
+        break;
+      case 8:
+        event.target.style.color = 'black';
+        break;
+    }
+  }
+};
+const onBoxContextMenu = (event) => {
+  console.log('onBoxContextMenu');
+  event.preventDefault();
+  event.target.innerHTML = '&#128681';
 };
 
-const renderGameField = (gameField) => {
+const renderGameField = () => {
   // console.log('renderGameField');
+  const gameField = getItem('gameField');
   const numberOfRows = gameField.length;
   const numberOfColums = gameField[0].length;
   const gameFieldElem = document.querySelector('.game__field');
   gameFieldElem.addEventListener('click', onBoxClick);
-  for (
-    let carrentRow = 0;
-    carrentRow < numberOfRows;
-    carrentRow += 1
-  ) {
+  gameFieldElem.addEventListener('contextmenu', onBoxContextMenu);
+  for (let carrentRow = 0; carrentRow < numberOfRows; carrentRow += 1) {
     // console.log(carrentRow);
     const carrentRowElem = document.createElement('div');
     carrentRowElem.dataset.row = carrentRow;
@@ -95,8 +134,7 @@ const renderGameField = (gameField) => {
       // console.log(carrentColum);
       const carrentColumElem = document.createElement('div');
       // if (gameField[carrentRow][carrentColum]) {
-      //   carrentColumElem.innerHTML =
-      //     gameField[carrentRow][carrentColum];
+      //   carrentColumElem.innerHTML = gameField[carrentRow][carrentColum];
       // }
       carrentColumElem.dataset.row = carrentRow;
       carrentColumElem.dataset.colum = carrentColum;
@@ -107,13 +145,9 @@ const renderGameField = (gameField) => {
     gameFieldElem.append(carrentRowElem);
   }
 
-  console.log(gameFieldElem, numberOfRows, numberOfColums);
+  // console.log(gameFieldElem, numberOfRows, numberOfColums);
 };
 
-const gameField = addNumbersToGameField(getNewGameField());
-
-logGameFieldToConsole(gameField);
-renderGameField(gameField);
-
-// Вывод результата в консоль
-// console.log(result);
+getNewGameField();
+logGameFieldToConsole();
+renderGameField();
