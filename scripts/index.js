@@ -62,12 +62,27 @@ const logGameFieldToConsole = () => {
     console.log(line.reduce((acc, cell) => `${acc}| ${cell} `, ''));
   });
 };
+// const getClosedBoxCount = () => {
+//   const openedBoxCount = document.querySelectorAll(
+//     '.game-field__box-open',
+//   ).length;
+//   const closedBoxCount =
+//     getItem('widthField') * getItem('heightField') - openedBoxCount;
+//   return closedBoxCount;
+// };
+
 function renderBombCounter() {
   const bombCounter = getItem('bombCounter').toString().padStart(3, '0');
   document.querySelector('.game-bar__bomb-counter').innerHTML = bombCounter;
-  if (+bombCounter < 0) youWin();
 }
-
+const checkGameStatus = () => {
+  const openedBoxCount = document.querySelectorAll(
+    '.game-field__box-open',
+  ).length;
+  const closedBoxCount =
+    getItem('widthField') * getItem('heightField') - openedBoxCount;
+  if (closedBoxCount === getItem('numberOfBombs')) youWin();
+};
 function onBoxClick(event) {
   const gameField = getItem('gameField');
   console.log(event.target.dataset.row, event.target.dataset.colum);
@@ -109,10 +124,10 @@ function onBoxClick(event) {
         event.target.style.color = 'black';
         break;
     }
+    checkGameStatus();
   }
 }
 function onBoxContextMenu(event) {
-  console.log('onBoxContextMenu');
   event.preventDefault();
   event.target.innerHTML = '&#128681';
   let bombCounter = getItem('bombCounter');
@@ -175,29 +190,28 @@ function newGame() {
   setItem('timerId', timerId);
   // console.log(`timerId: ${timerId}`);
 }
+function removeGameFieldEventListener() {
+  const gameFieldElem = document.querySelector('.game__field');
+  gameFieldElem.removeEventListener('click', onBoxClick);
+  gameFieldElem.removeEventListener('contextmenu', onBoxContextMenu);
+}
 function youWin() {
   console.log('You win!');
   alert('You win!');
   clearInterval(getItem('timerId'));
-  const gameFieldElem = document.querySelector('.game__field');
-  gameFieldElem.removeEventListener('click', onBoxClick);
-  gameFieldElem.removeEventListener('contextmenu', onBoxContextMenu);
+  removeGameFieldEventListener();
 }
 function gameOver() {
   console.log('GameOver');
   alert('Game over');
   clearInterval(getItem('timerId'));
-  const gameFieldElem = document.querySelector('.game__field');
-  gameFieldElem.removeEventListener('click', onBoxClick);
-  gameFieldElem.removeEventListener('contextmenu', onBoxContextMenu);
+  removeGameFieldEventListener();
 }
 function onSmileClick() {
   newGame();
 }
 newGame();
-// getNewGameField();
-// logGameFieldToConsole();
-// renderGameField();
+
 document
   .querySelector('.game-bar__smile')
   .addEventListener('click', onSmileClick);
