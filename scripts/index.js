@@ -20,7 +20,7 @@ const getNewGameField = (
   setItem('widthField', widthField);
   setItem('heightField', heightField);
   setItem('numberOfBombs', numberOfBombs);
-
+  setItem('bombCounter', numberOfBombs);
   const array = new Array(heightField)
     .fill(null)
     .map(() => new Array(widthField).fill(null));
@@ -40,7 +40,6 @@ const getNewGameField = (
 };
 
 function addNumbersToGameField() {
-  console.log('1');
   const gameField = getItem('gameField');
   gameField.forEach((row, rowNumber) =>
     row.forEach((box, boxNumber) => {
@@ -63,8 +62,13 @@ const logGameFieldToConsole = () => {
     console.log(line.reduce((acc, cell) => `${acc}| ${cell} `, ''));
   });
 };
+function renderBombCounter() {
+  const bombCounter = getItem('bombCounter').toString().padStart(3, '0');
+  document.querySelector('.game-bar__bomb-counter').innerHTML = bombCounter;
+  if (+bombCounter < 0) youWin();
+}
 
-const onBoxClick = (event) => {
+function onBoxClick(event) {
   const gameField = getItem('gameField');
   console.log(event.target.dataset.row, event.target.dataset.colum);
   event.target.classList.add('game-field__box-open');
@@ -78,6 +82,7 @@ const onBoxClick = (event) => {
     switch (gameField[event.target.dataset.row][event.target.dataset.colum]) {
       case '*':
         event.target.style.backgroundColor = 'red';
+        gameOver();
         break;
       case 1:
         event.target.style.color = 'blue';
@@ -105,23 +110,26 @@ const onBoxClick = (event) => {
         break;
     }
   }
-};
-const onBoxContextMenu = (event) => {
+}
+function onBoxContextMenu(event) {
   console.log('onBoxContextMenu');
   event.preventDefault();
   event.target.innerHTML = '&#128681';
-};
-
-const renderGameField = () => {
-  // console.log('renderGameField');
+  let bombCounter = getItem('bombCounter');
+  if (bombCounter > 0) bombCounter -= 1;
+  setItem('bombCounter', bombCounter);
+  renderBombCounter();
+}
+function renderGameField() {
   const gameField = getItem('gameField');
   const numberOfRows = gameField.length;
   const numberOfColums = gameField[0].length;
   const gameFieldElem = document.querySelector('.game__field');
+  gameFieldElem.innerHTML = '';
+  gameFieldElem.removeEventListener('click', onBoxClick);
   gameFieldElem.addEventListener('click', onBoxClick);
   gameFieldElem.addEventListener('contextmenu', onBoxContextMenu);
   for (let carrentRow = 0; carrentRow < numberOfRows; carrentRow += 1) {
-    // console.log(carrentRow);
     const carrentRowElem = document.createElement('div');
     carrentRowElem.dataset.row = carrentRow;
     carrentRowElem.classList.add('game-field__row');
@@ -131,7 +139,6 @@ const renderGameField = () => {
       carrentColum < numberOfColums;
       carrentColum += 1
     ) {
-      // console.log(carrentColum);
       const carrentColumElem = document.createElement('div');
       // if (gameField[carrentRow][carrentColum]) {
       //   carrentColumElem.innerHTML = gameField[carrentRow][carrentColum];
@@ -141,13 +148,56 @@ const renderGameField = () => {
       carrentColumElem.classList.add('game-field__box');
       carrentRowElem.append(carrentColumElem);
     }
-
     gameFieldElem.append(carrentRowElem);
   }
+}
+function renderTimer() {
+  const gameStartTime = getItem('startGameTime');
+  let gameTimer = '000';
+  if (gameStartTime) {
+    gameTimer = ((new Date().getTime() - gameStartTime) / 1000)
+      .toFixed()
+      .toString()
+      .padStart(3, '0');
+  }
+  if (+gameTimer > 998) gameOver();
+  document.querySelector('.game-bar__timer').innerHTML = gameTimer;
+}
 
-  // console.log(gameFieldElem, numberOfRows, numberOfColums);
-};
-
-getNewGameField();
-logGameFieldToConsole();
-renderGameField();
+function newGame() {
+  getNewGameField();
+  logGameFieldToConsole();
+  renderGameField();
+  renderBombCounter();
+  setItem('startGameTime', new Date().getTime());
+  renderTimer();
+  const timerId = setInterval(renderTimer, 1000);
+  setItem('timerId', timerId);
+  // console.log(`timerId: ${timerId}`);
+}
+function youWin() {
+  console.log('You win!');
+  alert('You win!');
+  clearInterval(getItem('timerId'));
+  const gameFieldElem = document.querySelector('.game__field');
+  gameFieldElem.removeEventListener('click', onBoxClick);
+  gameFieldElem.removeEventListener('contextmenu', onBoxContextMenu);
+}
+function gameOver() {
+  console.log('GameOver');
+  alert('Game over');
+  clearInterval(getItem('timerId'));
+  const gameFieldElem = document.querySelector('.game__field');
+  gameFieldElem.removeEventListener('click', onBoxClick);
+  gameFieldElem.removeEventListener('contextmenu', onBoxContextMenu);
+}
+function onSmileClick() {
+  newGame();
+}
+newGame();
+// getNewGameField();
+// logGameFieldToConsole();
+// renderGameField();
+document
+  .querySelector('.game-bar__smile')
+  .addEventListener('click', onSmileClick);

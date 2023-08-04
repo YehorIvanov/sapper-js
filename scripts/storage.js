@@ -5,6 +5,9 @@ const carrentGame = {
   numberOfBombs: 10,
   emptyBox: null,
   gameField: [],
+  bombCounter: 0,
+  startGameTime: null,
+  timerId: null,
 };
 
 export const setItem = (key, value) => {
