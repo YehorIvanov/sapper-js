@@ -200,7 +200,7 @@ button:active {
 
 .game {
   margin: 9px;
-  margin-top: 0;
+  margin-top: 4.5px;
   border-style: outset;
   border-width: 3px;
   border-bottom-color: #424242;
@@ -213,7 +213,6 @@ button:active {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 36px;
   margin: 9px;
   border-style: inset;
   border-width: 3px;
@@ -222,28 +221,53 @@ button:active {
   border-right-color: #fff;
   border-bottom-color: #fff;
 }
-.game .game-bar {
-  font-family: "Seven Segment", sans-serif;
-}
 .game .game-bar__bomb-counter {
-  font-family: "Seven Segment", sans-serif;
-  color: red;
   background-color: black;
-  font-size: 28px;
-  font-weight: 900;
   margin: 4.5px;
+  display: flex;
+  flex-direction: row;
+  padding: 1px;
+  border-style: inset;
+  border-width: 3px;
+  border-top-color: #424242;
+  border-left-color: #424242;
+  border-right-color: #fff;
+  border-bottom-color: #fff;
+}
+.game .game-bar__bomb-num {
+  height: 36px;
+  width: 18px;
+  background-size: cover;
+  margin: 4px;
 }
 .game .game-bar__timer {
-  font-family: "Seven Segment", sans-serif;
-  color: red;
   background-color: black;
-  font-size: 28px;
-  font-weight: 900;
   margin: 4.5px;
+  display: flex;
+  flex-direction: row;
+  padding: 1px;
+  border-style: inset;
+  border-width: 3px;
+  border-top-color: #424242;
+  border-left-color: #424242;
+  border-right-color: #fff;
+  border-bottom-color: #fff;
+}
+.game .game-bar__timer-num {
+  height: 36px;
+  width: 18px;
+  background-size: cover;
+  margin: 4px;
 }
 .game .game-bar__smile {
-  width: 22.5px;
-  height: 22.5px;
+  width: 40.5px;
+  height: 40.5px;
+  border-style: outset;
+  border-width: 3px;
+  border-bottom-color: #424242;
+  border-right-color: #424242;
+  border-left-color: #fff;
+  border-top-color: #fff;
 }
 .game .game-field {
   margin: 9px;

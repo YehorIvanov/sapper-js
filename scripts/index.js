@@ -62,18 +62,12 @@ const logGameFieldToConsole = () => {
     console.log(line.reduce((acc, cell) => `${acc}| ${cell} `, ''));
   });
 };
-// const getClosedBoxCount = () => {
-//   const openedBoxCount = document.querySelectorAll(
-//     '.game-field__box-open',
-//   ).length;
-//   const closedBoxCount =
-//     getItem('widthField') * getItem('heightField') - openedBoxCount;
-//   return closedBoxCount;
-// };
 
 function renderBombCounter() {
   const bombCounter = getItem('bombCounter').toString().padStart(3, '0');
-  document.querySelector('.game-bar__bomb-counter').innerHTML = bombCounter;
+  document.querySelector(
+    '.game-bar__bomb-counter',
+  ).innerHTML = `<div class="game-bar__bomb-num" style="background-image: url('/img/d${bombCounter[0]}.svg');"></div><div class="game-bar__bomb-num" style="background-image: url('/img/d${bombCounter[1]}.svg');"></div><div class="game-bar__bomb-num" style="background-image: url('/img/d${bombCounter[2]}.svg');"></div>`;
 }
 const checkGameStatus = () => {
   const openedBoxCount = document.querySelectorAll(
@@ -176,7 +170,9 @@ function renderTimer() {
       .padStart(3, '0');
   }
   if (+gameTimer > 998) gameOver();
-  document.querySelector('.game-bar__timer').innerHTML = gameTimer;
+  document.querySelector(
+    '.game-bar__timer',
+  ).innerHTML = `<div class="game-bar__bomb-num" style="background-image: url('/img/d${gameTimer[0]}.svg');"></div><div class="game-bar__bomb-num" style="background-image: url('/img/d${gameTimer[1]}.svg');"></div><div class="game-bar__bomb-num" style="background-image: url('/img/d${gameTimer[2]}.svg');"></div>`;
 }
 
 function newGame() {

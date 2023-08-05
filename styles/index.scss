@@ -62,7 +62,7 @@
 }
 .game {
   margin: $half-size;
-  margin-top: 0;
+  margin-top: $quarter-size;
   border-style: outset;
   border-width: 3px;
   border-bottom-color: $border-color-dark;
@@ -75,7 +75,7 @@
     justify-content: space-between;
     align-items: center;
 
-    height: $double-size;
+    // height: $double-size;
 
     margin: $half-size;
     border-style: inset;
@@ -86,26 +86,55 @@
     border-bottom-color: $border-color-light;
   }
   .game-bar {
-    font-family: 'Seven Segment', sans-serif;
     &__bomb-counter {
-      font-family: 'Seven Segment', sans-serif;
-      color: red;
       background-color: black;
-      font-size: 28px;
-      font-weight: 900;
       margin: $quarter-size;
+      display: flex;
+      flex-direction: row;
+      padding: 1px;
+      border-style: inset;
+      border-width: 3px;
+      border-top-color: $border-color-dark;
+      border-left-color: $border-color-dark;
+      border-right-color: $border-color-light;
+      border-bottom-color: $border-color-light;
+    }
+    &__bomb-num {
+      //   background-image: url(/img/d0.svg);
+      height: $double-size;
+      width: $font-size-maim;
+      background-size: cover;
+      margin: 4px;
     }
     &__timer {
-      font-family: 'Seven Segment', sans-serif;
-      color: red;
       background-color: black;
-      font-size: 28px;
-      font-weight: 900;
       margin: $quarter-size;
+      display: flex;
+      flex-direction: row;
+      padding: 1px;
+      border-style: inset;
+      border-width: 3px;
+      border-top-color: $border-color-dark;
+      border-left-color: $border-color-dark;
+      border-right-color: $border-color-light;
+      border-bottom-color: $border-color-light;
+    }
+    &__timer-num {
+      height: $double-size;
+      width: $font-size-maim;
+      background-size: cover;
+      margin: 4px;
     }
     &__smile {
-      width: $font-size-hight;
-      height: $font-size-hight;
+      width: $double-size + $quarter-size;
+      height: $double-size + $quarter-size;
+
+      border-style: outset;
+      border-width: 3px;
+      border-bottom-color: $border-color-dark;
+      border-right-color: $border-color-dark;
+      border-left-color: $border-color-light;
+      border-top-color: $border-color-light;
     }
   }
   .game-field {
