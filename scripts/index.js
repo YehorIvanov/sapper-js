@@ -14,8 +14,8 @@ import { openEmptyBoxes } from './openEmptyBoxes.js';
 
 const getNewGameField = (
   widthField = 10,
-  heightField = 30,
-  numberOfBombs = 45,
+  heightField = 10,
+  numberOfBombs = 15,
 ) => {
   setItem('widthField', widthField);
   setItem('heightField', heightField);
