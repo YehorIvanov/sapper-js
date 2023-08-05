@@ -23,8 +23,6 @@
   color: #212529;
 }
 .header {
-  //   border: 1px solid;
-  // height: 18px;
   height: 22px;
   background: -webkit-linear-gradient(left, #08216b, #a5cef7);
   color: #fff;
@@ -32,10 +30,13 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  //   padding-top: 2px;
-  //   padding-bottom: 1px;
   padding: 2px;
   text-align: left;
+
+  &__icon {
+    height: $font-size-maim;
+    width: $font-size-maim;
+  }
 }
 .navbar {
   background: silver;
@@ -75,8 +76,6 @@
     justify-content: space-between;
     align-items: center;
 
-    // height: $double-size;
-
     margin: $half-size;
     border-style: inset;
     border-width: 3px;
@@ -100,7 +99,6 @@
       border-bottom-color: $border-color-light;
     }
     &__bomb-num {
-      //   background-image: url(/img/d0.svg);
       height: $double-size;
       width: $font-size-maim;
       background-size: cover;
@@ -128,6 +126,7 @@
     &__smile {
       width: $double-size + $quarter-size;
       height: $double-size + $quarter-size;
+      font-size: $font-size-hight;
 
       border-style: outset;
       border-width: 3px;

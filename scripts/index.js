@@ -14,8 +14,8 @@ import { openEmptyBoxes } from './openEmptyBoxes.js';
 
 const getNewGameField = (
   widthField = 10,
-  heightField = 10,
-  numberOfBombs = 15,
+  heightField = 30,
+  numberOfBombs = 45,
 ) => {
   setItem('widthField', widthField);
   setItem('heightField', heightField);
@@ -29,8 +29,8 @@ const getNewGameField = (
     let xLoc;
     let yLoc;
     do {
-      xLoc = Math.floor(Math.random() * 10);
-      yLoc = Math.floor(Math.random() * 10);
+      xLoc = Math.floor(Math.random() * widthField);
+      yLoc = Math.floor(Math.random() * heightField);
     } while (array[xLoc][yLoc] === '*');
     array[xLoc][yLoc] = '*';
   }
@@ -86,10 +86,12 @@ function onBoxClick(event) {
     setItem('callStackTimeControl', new Date().getTime());
     openEmptyBoxes(event.target.dataset.row, event.target.dataset.colum);
   } else {
+    event.target.innerHTML =
+      gameField[event.target.dataset.row][event.target.dataset.colum];
     switch (gameField[event.target.dataset.row][event.target.dataset.colum]) {
       case '*':
         event.target.style.backgroundColor = 'red';
-        // event.target.style.backgroundImage = "url('img/mine.png')";
+        event.target.style.backgroundImage = "url('img/mine.png')";
         gameOver();
         break;
       case 1:
@@ -117,13 +119,20 @@ function onBoxClick(event) {
         event.target.style.color = 'black';
         break;
     }
-    event.targetstyle.backgroundImage = "url('img/mine.png')";
     checkGameStatus();
   }
 }
 function onBoxContextMenu(event) {
   event.preventDefault();
-  event.target.innerHTML = '&#128681';
+  console.log(event.target.style.backgroundImage);
+  console.log('flag');
+  if (event.target.style.backgroundImage === 'url("img/flag.png")') {
+    event.target.style.backgroundImage = '';
+    console.log('off');
+  } else {
+    event.target.style.backgroundImage = 'url("img/flag.png")';
+    console.log('on');
+  }
   let bombCounter = getItem('bombCounter');
   if (bombCounter > 0) bombCounter -= 1;
   setItem('bombCounter', bombCounter);
@@ -230,3 +239,4 @@ newGame();
 document
   .querySelector('.game-bar__smile')
   .addEventListener('click', onSmileClick);
+console.log(window.innerWidth);

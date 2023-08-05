@@ -175,6 +175,10 @@ button:active {
   padding: 2px;
   text-align: left;
 }
+.header__icon {
+  height: 18px;
+  width: 18px;
+}
 
 .navbar {
   background: silver;
@@ -262,6 +266,7 @@ button:active {
 .game .game-bar__smile {
   width: 40.5px;
   height: 40.5px;
+  font-size: 22.5px;
   border-style: outset;
   border-width: 3px;
   border-bottom-color: #424242;
