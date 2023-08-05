@@ -286,6 +286,7 @@ button:active {
   height: 22.5px;
   width: 22.5px;
   font-size: 13.5px;
+  background-size: cover;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -299,7 +300,9 @@ button:active {
   border-top-color: #fff;
 }
 .game .game-field__box-open {
-  border: 3px solid silver;
+  border: 1px dotted gray;
+  width: 26.5px;
+  height: 26.5px;
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -86,11 +86,10 @@ function onBoxClick(event) {
     setItem('callStackTimeControl', new Date().getTime());
     openEmptyBoxes(event.target.dataset.row, event.target.dataset.colum);
   } else {
-    event.target.innerHTML =
-      gameField[event.target.dataset.row][event.target.dataset.colum];
     switch (gameField[event.target.dataset.row][event.target.dataset.colum]) {
       case '*':
         event.target.style.backgroundColor = 'red';
+        // event.target.style.backgroundImage = "url('img/mine.png')";
         gameOver();
         break;
       case 1:
@@ -118,6 +117,7 @@ function onBoxClick(event) {
         event.target.style.color = 'black';
         break;
     }
+    event.targetstyle.backgroundImage = "url('img/mine.png')";
     checkGameStatus();
   }
 }
@@ -197,9 +197,28 @@ function youWin() {
   clearInterval(getItem('timerId'));
   removeGameFieldEventListener();
 }
+function openAllBombs() {
+  const gameField = getItem('gameField');
+  gameField.forEach((row, rowNumber) =>
+    row.forEach((box, boxNumber) => {
+      if (box === '*') {
+        const boxWithBombElem = document.querySelector(
+          `div[data-row="${rowNumber}"][data-colum="${boxNumber}"].game-field__box`,
+        );
+        boxWithBombElem.classList.add('game-field__box-open');
+        boxWithBombElem.style.backgroundColor = 'red';
+        boxWithBombElem.style.backgroundImage = "url('img/mine.png')";
+      }
+    }),
+  );
+}
 function gameOver() {
+  openAllBombs();
   console.log('GameOver');
-  alert('Game over');
+  function sayGameOver() {
+    alert('Game over');
+  }
+  setTimeout(sayGameOver, 1000);
   clearInterval(getItem('timerId'));
   removeGameFieldEventListener();
 }

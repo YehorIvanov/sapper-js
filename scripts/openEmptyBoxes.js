@@ -6,7 +6,6 @@ import { getItem } from './storage.js';
 
 export let callStackTimeControl = null;
 export const openEmptyBoxes = (row, colum) => {
-//   console.log(getItem('callStackTimeControl'));
   const neighbouringBoxes = getNeighboringBoxes(row, colum, 0);
   if (neighbouringBoxes.length) {
     neighbouringBoxes.forEach((box) => {
