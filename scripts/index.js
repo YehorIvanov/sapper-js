@@ -119,4 +119,4 @@ document
   .addEventListener('click', onSmileClick);
 console.log(window.innerWidth);
 
-// document.querySelector
+document.querySelector('.footer').innerHTML = window.innerWidth;
