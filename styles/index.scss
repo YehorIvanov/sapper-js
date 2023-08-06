@@ -189,4 +189,14 @@
 .content {
 }
 .footer {
+  height: $font-size-hight;
+  width: 100vw;
+  background-color: $color-silver;
+  position: fixed;
+  bottom: 0;
+  z-index: 3;
+
+  border-style: outset;
+  border-width: 3px;
+  border-top-color: $border-color-light;
 }

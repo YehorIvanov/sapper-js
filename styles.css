@@ -316,4 +316,16 @@ button:active {
   height: 26.5px;
 }
 
+.footer {
+  height: 22.5px;
+  width: 100vw;
+  background-color: silver;
+  position: fixed;
+  bottom: 0;
+  z-index: 3;
+  border-style: outset;
+  border-width: 3px;
+  border-top-color: #fff;
+}
+
 /*# sourceMappingURL=styles.css.map */

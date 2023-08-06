@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable import/extensions */
 import { getItem } from './storage.js';
 import { gameOver } from './game-control.js';
