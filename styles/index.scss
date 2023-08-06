@@ -1,7 +1,7 @@
 @import 'variables.scss';
 @import 'common.scss';
 
-@import url('https://fonts.cdnfonts.com/css/seven-segment');
+// @import url('https://fonts.cdnfonts.com/css/seven-segment');
 
 .page {
   display: flex;
@@ -11,8 +11,6 @@
 }
 
 .window {
-  //   width: 300px;
-
   border: solid;
   border-width: 2px;
   border-bottom-color: $border-color-dark;
@@ -168,7 +166,8 @@
       align-items: center;
       justify-content: center;
 
-      font-weight: 600;
+      font-size: $font-size-maim;
+      font-weight: 900;
 
       border-style: outset;
       border: solid;
