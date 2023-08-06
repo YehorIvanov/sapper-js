@@ -67,16 +67,16 @@ function renderBombCounter() {
   const bombCounter = getItem('bombCounter').toString().padStart(3, '0');
   document.querySelector(
     '.game-bar__bomb-counter',
-  ).innerHTML = `<div class="game-bar__bomb-num" style="background-image: url('/img/d${bombCounter[0]}.svg');"></div><div class="game-bar__bomb-num" style="background-image: url('/img/d${bombCounter[1]}.svg');"></div><div class="game-bar__bomb-num" style="background-image: url('/img/d${bombCounter[2]}.svg');"></div>`;
+  ).innerHTML = `<div class="game-bar__bomb-num" style="background-image: url('img/d${bombCounter[0]}.svg');"></div><div class="game-bar__bomb-num" style="background-image: url('img/d${bombCounter[1]}.svg');"></div><div class="game-bar__bomb-num" style="background-image: url('img/d${bombCounter[2]}.svg');"></div>`;
 }
-const checkGameStatus = () => {
+function checkGameStatus() {
   const openedBoxCount = document.querySelectorAll(
     '.game-field__box-open',
   ).length;
   const closedBoxCount =
     getItem('widthField') * getItem('heightField') - openedBoxCount;
   if (closedBoxCount === getItem('numberOfBombs')) youWin();
-};
+}
 function onBoxClick(event) {
   const gameField = getItem('gameField');
   console.log(event.target.dataset.row, event.target.dataset.colum);
@@ -181,7 +181,7 @@ function renderTimer() {
   if (+gameTimer > 998) gameOver();
   document.querySelector(
     '.game-bar__timer',
-  ).innerHTML = `<div class="game-bar__bomb-num" style="background-image: url('/img/d${gameTimer[0]}.svg');"></div><div class="game-bar__bomb-num" style="background-image: url('/img/d${gameTimer[1]}.svg');"></div><div class="game-bar__bomb-num" style="background-image: url('/img/d${gameTimer[2]}.svg');"></div>`;
+  ).innerHTML = `<div class="game-bar__bomb-num" style="background-image: url('img/d${gameTimer[0]}.svg');"></div><div class="game-bar__bomb-num" style="background-image: url('img/d${gameTimer[1]}.svg');"></div><div class="game-bar__bomb-num" style="background-image: url('img/d${gameTimer[2]}.svg');"></div>`;
 }
 
 function newGame() {
