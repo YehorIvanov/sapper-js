@@ -237,12 +237,15 @@ button:active {
   border-left-color: #424242;
   border-right-color: #fff;
   border-bottom-color: #fff;
+  position: relative;
 }
 .game .game-bar__bomb-num {
   height: 36px;
   width: 18px;
   background-size: cover;
   margin: 4px;
+  position: relative;
+  z-index: 3;
 }
 .game .game-bar__timer {
   background-color: black;
@@ -256,12 +259,15 @@ button:active {
   border-left-color: #424242;
   border-right-color: #fff;
   border-bottom-color: #fff;
+  position: relative;
 }
 .game .game-bar__timer-num {
   height: 36px;
   width: 18px;
   background-size: cover;
   margin: 4px;
+  position: relative;
+  z-index: 3;
 }
 .game .game-bar__smile {
   width: 40.5px;

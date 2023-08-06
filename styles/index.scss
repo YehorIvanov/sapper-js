@@ -97,12 +97,16 @@
       border-left-color: $border-color-dark;
       border-right-color: $border-color-light;
       border-bottom-color: $border-color-light;
+      position: relative;
     }
     &__bomb-num {
       height: $double-size;
       width: $font-size-maim;
       background-size: cover;
       margin: 4px;
+
+      position: relative;
+      z-index: 3;
     }
     &__timer {
       background-color: black;
@@ -116,12 +120,16 @@
       border-left-color: $border-color-dark;
       border-right-color: $border-color-light;
       border-bottom-color: $border-color-light;
+      position: relative;
     }
     &__timer-num {
       height: $double-size;
       width: $font-size-maim;
       background-size: cover;
       margin: 4px;
+
+      position: relative;
+      z-index: 3;
     }
     &__smile {
       width: $double-size + $quarter-size;
