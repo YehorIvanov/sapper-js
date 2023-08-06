@@ -326,6 +326,10 @@ button:active {
   border-style: outset;
   border-width: 3px;
   border-top-color: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 /*# sourceMappingURL=styles.css.map */

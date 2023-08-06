@@ -199,4 +199,9 @@
   border-style: outset;
   border-width: 3px;
   border-top-color: $border-color-light;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
