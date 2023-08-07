@@ -17,46 +17,12 @@ export function onBoxClick(event) {
     openEmptyBoxes(event.target.dataset.row, event.target.dataset.colum);
   } else {
     renderNum(event.target.dataset.row, event.target.dataset.colum);
-    // event.target.innerHTML =
-    //   gameField[event.target.dataset.row][event.target.dataset.colum];
-    // switch (gameField[event.target.dataset.row][event.target.dataset.colum]) {
-    //   case '*':
-    //     event.target.style.backgroundColor = 'red';
-    //     event.target.style.backgroundImage = "url('img/mine.png')";
-    //     gameOver();
-    //     break;
-    //   case 1:
-    //     event.target.style.color = 'blue';
-    //     break;
-    //   case 2:
-    //     event.target.style.color = 'green';
-    //     break;
-    //   case 3:
-    //     event.target.style.color = 'red';
-    //     break;
-    //   case 4:
-    //     event.target.style.color = 'darkblue';
-    //     break;
-    //   case 5:
-    //     event.target.style.color = 'darkred';
-    //     break;
-    //   case 6:
-    //     event.target.style.color = 'darkgreen';
-    //     break;
-    //   case 7:
-    //     event.target.style.color = 'purple';
-    //     break;
-    //   case 8:
-    //     event.target.style.color = 'black';
-    //     break;
-    // }
     checkGameStatus();
   }
 }
 
 export function onBoxContextMenu(event) {
   event.preventDefault();
-  console.log(event.target.style.backgroundImage);
   if (event.target.style.backgroundImage === 'url("img/flag.png")') {
     event.target.style.backgroundImage = '';
   } else {

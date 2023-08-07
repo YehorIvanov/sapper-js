@@ -42,7 +42,6 @@ export function gameOver() {
   setTimeout(sayGameOver, 1000);
   clearInterval(getItem('timerId'));
   removeGameFieldEventListener();
-  //  &#9785;
   document.querySelector('.game-bar__smile').innerHTML = '&#128577;';
 }
 

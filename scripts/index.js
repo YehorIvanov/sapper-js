@@ -97,11 +97,26 @@ function renderGameField() {
     gameFieldElem.append(carrentRowElem);
   }
 }
+const renderStartPosition = () => {
+  const gameField = getItem('gameField');
+  const widthField = getItem('widthField');
+  const heightField = getItem('heightField');
+  let row;
+  let column;
+  do {
+    column = Math.floor(Math.random() * widthField);
+    row = Math.floor(Math.random() * heightField);
+  } while (gameField[row][column]);
+  document.querySelector(
+    `div[data-row="${row}"][data-colum="${column}"].game-field__box`,
+  ).style.backgroundImage = 'url("img/start.png")';
+};
 
 function newGame() {
   getNewGameField();
   logGameFieldToConsole();
   renderGameField();
+  renderStartPosition();
   renderBombCounter();
   setItem('startGameTime', new Date().getTime());
   renderTimer();

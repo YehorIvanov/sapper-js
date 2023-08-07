@@ -314,6 +314,7 @@ button:active {
   border: 1px dotted gray;
   width: 26.5px;
   height: 26.5px;
+  background-image: none;
 }
 
 .footer {
