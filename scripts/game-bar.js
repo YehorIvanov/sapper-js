@@ -1,6 +1,6 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable import/extensions */
-import { getItem } from './storage.js';
+import { getItem, setItem } from './storage.js';
 import { gameOver } from './game-control.js';
 
 export function renderTimer() {
@@ -16,6 +16,7 @@ export function renderTimer() {
   document.querySelector(
     '.game-bar__timer',
   ).innerHTML = `<div class="game-bar__bomb-num" style="background-image: url('img/d${gameTimer[0]}.svg');"></div><div class="game-bar__bomb-num" style="background-image: url('img/d${gameTimer[1]}.svg');"></div><div class="game-bar__bomb-num" style="background-image: url('img/d${gameTimer[2]}.svg');"></div>`;
+  setItem('gameTimer', gameTimer);
 }
 export function renderBombCounter() {
   const bombCounter = getItem('bombCounter').toString().padStart(3, '0');

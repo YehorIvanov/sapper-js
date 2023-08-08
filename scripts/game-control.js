@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 /* eslint-disable operator-linebreak */
 /* eslint-disable import/no-cycle */
 /* eslint-disable import/extensions */
@@ -25,10 +26,29 @@ function removeGameFieldEventListener() {
   gameFieldElem.removeEventListener('click', onBoxClick);
   gameFieldElem.removeEventListener('contextmenu', onBoxContextMenu);
 }
-
+const getScore = () => {
+  const widthField = getItem('widthField');
+  const heightField = getItem('heightField');
+  const numberOfBombs = getItem('numberOfBombs');
+  const startGameTime = getItem('startGameTime');
+  const endGameTime = new Date().getTime();
+  console.log(
+    widthField,
+    heightField,
+    numberOfBombs,
+    startGameTime,
+    endGameTime,
+  );
+  const score = Math.floor(
+    (numberOfBombs /(widthField * heightField) ) *
+      ((endGameTime - startGameTime) / 100 /
+      numberOfBombs)
+  );
+  return score;
+};
 function youWin() {
-  console.log('You win!');
-  alert('You win!');
+  console.log(`You win! \n ${getScore()}`);
+  alert(`You win! \n ${getScore()}`);
   clearInterval(getItem('timerId'));
   removeGameFieldEventListener();
 }
@@ -39,6 +59,7 @@ export function gameOver() {
   function sayGameOver() {
     alert('Game over');
   }
+  clearInterval(getItem('timerId'));
   setTimeout(sayGameOver, 1000);
   clearInterval(getItem('timerId'));
   removeGameFieldEventListener();
