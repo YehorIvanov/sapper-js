@@ -1,3 +1,4 @@
+/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable comma-dangle */
 /* eslint-disable operator-linebreak */
 /* eslint-disable import/no-cycle */
@@ -9,16 +10,17 @@ import { onBoxClick, onBoxContextMenu } from './eventListeners.js';
 
 function openAllBombs() {
   const gameField = getItem('gameField');
-  gameField.forEach((row, rowNumber) => row.forEach((box, boxNumber) => {
-    if (box === '*') {
-      const boxWithBombElem = document.querySelector(
-        `div[data-row="${rowNumber}"][data-colum="${boxNumber}"].game-field__box`,
-      );
-      boxWithBombElem.classList.add('game-field__box-open');
-      boxWithBombElem.style.backgroundColor = 'red';
-      boxWithBombElem.style.backgroundImage = "url('img/mine.png')";
-    }
-  }));
+  gameField.forEach((row, rowNumber) =>
+    row.forEach((box, boxNumber) => {
+      if (box === '*') {
+        const boxWithBombElem = document.querySelector(
+          `div[data-row="${rowNumber}"][data-colum="${boxNumber}"].game-field__box`
+        );
+        boxWithBombElem.classList.add('game-field__box-open');
+        boxWithBombElem.style.backgroundColor = 'red';
+        boxWithBombElem.style.backgroundImage = "url('img/mine.png')";
+      }
+    }));
 }
 
 function removeGameFieldEventListener() {
@@ -37,18 +39,24 @@ const getScore = () => {
     heightField,
     numberOfBombs,
     startGameTime,
-    endGameTime,
+    endGameTime
   );
   const score = Math.floor(
-    (numberOfBombs /(widthField * heightField) ) *
-      ((endGameTime - startGameTime) / 100 /
-      numberOfBombs)
+    (numberOfBombs * widthField * heightField) /
+      (((endGameTime - startGameTime) / 1000) / numberOfBombs)
   );
-  return score;
+  const scoreObj = {
+    fieldSize: widthField * heightField,
+    numberOfBombs,
+    gameВifficulty: (widthField * heightField) / numberOfBombs,
+    secondsPerBomb: (endGameTime - startGameTime) / 1000 / numberOfBombs,
+    score,
+  };
+  return scoreObj;
 };
 function youWin() {
-  console.log(`You win! \n ${getScore()}`);
-  alert(`You win! \n ${getScore()}`);
+  console.log(`You win! \n ${JSON.stringify(getScore())}`);
+  alert(`You win! \n ${JSON.stringify(getScore())}`);
   clearInterval(getItem('timerId'));
   removeGameFieldEventListener();
 }
@@ -68,7 +76,7 @@ export function gameOver() {
 
 export function checkGameStatus() {
   const openedBoxCount = document.querySelectorAll(
-    '.game-field__box-open',
+    '.game-field__box-open'
   ).length;
   const closedBoxCount =
     getItem('widthField') * getItem('heightField') - openedBoxCount;
