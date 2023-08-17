@@ -12,7 +12,7 @@ import { getNeighboringBoxes } from './getNeighboringBoxes.js';
 import { onBoxClick, onBoxContextMenu } from './eventListeners.js';
 import { renderBombCounter, renderTimer } from './game-bar.js';
 
-function getNewGameField(widthField = 10, heightField = 10, numberOfBombs = 10) {
+function getNewGameField(widthField = 10, heightField = 10, numberOfBombs = 15) {
   setItem('widthField', widthField);
   setItem('heightField', heightField);
   setItem('numberOfBombs', numberOfBombs);
