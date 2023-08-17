@@ -5,7 +5,7 @@
 /* eslint-disable import/extensions */
 /* eslint-disable import/prefer-default-export */
 
-import { getItem } from './storage.js';
+import { getItem, setItem } from './storage.js';
 import { onBoxClick, onBoxContextMenu } from './eventListeners.js';
 
 function openAllBombs() {
@@ -29,30 +29,18 @@ function removeGameFieldEventListener() {
   gameFieldElem.removeEventListener('contextmenu', onBoxContextMenu);
 }
 const getScore = () => {
+  const bestScore = getItem('bestScore');
   const widthField = getItem('widthField');
   const heightField = getItem('heightField');
   const numberOfBombs = getItem('numberOfBombs');
   const startGameTime = getItem('startGameTime');
   const endGameTime = new Date().getTime();
-  console.log(
-    widthField,
-    heightField,
-    numberOfBombs,
-    startGameTime,
-    endGameTime
-  );
   const score = Math.floor(
     (numberOfBombs * widthField * heightField) /
       (((endGameTime - startGameTime) / 1000) / numberOfBombs)
   );
-  const scoreObj = {
-    fieldSize: widthField * heightField,
-    numberOfBombs,
-    gameВifficulty: (widthField * heightField) / numberOfBombs,
-    secondsPerBomb: (endGameTime - startGameTime) / 1000 / numberOfBombs,
-    score,
-  };
-  return scoreObj;
+  if (score > bestScore) setItem('bestScore', score);
+  return score;
 };
 function youWin() {
   console.log(`You win! \n ${JSON.stringify(getScore())}`);

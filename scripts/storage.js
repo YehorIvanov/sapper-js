@@ -8,6 +8,7 @@ const carrentGame = {
   bombCounter: 0,
   startGameTime: null,
   timerId: null,
+  bestScore: null,
 };
 
 export const setItem = (key, value) => {

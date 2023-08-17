@@ -145,6 +145,24 @@ button:active {
   background: url(background.bmp);
 }
 
+.window-modal-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 5;
+  width: 100vw;
+  height: 100vh;
+}
+
+.window-modal {
+  height: 150px;
+  width: 150px;
+}
+.window-modal__content {
+  margin: 36px;
+}
+
 .page {
   display: flex;
   flex-direction: column;
@@ -331,6 +349,10 @@ button:active {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+
+.hidden {
+  display: none;
 }
 
 /*# sourceMappingURL=styles.css.map */

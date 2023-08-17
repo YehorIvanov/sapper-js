@@ -1,0 +1,19 @@
+
+.window-modal-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 5;
+    width: 100vw;
+    height: 100vh;
+}
+.window-modal {
+    height: 150px;
+    width: 150px;
+    &__content {
+        margin: $double-size;
+        
+    }
+
+}
