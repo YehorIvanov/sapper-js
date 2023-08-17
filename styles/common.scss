@@ -113,6 +113,10 @@ button {
   color: black;
   padding: 0 0 4px;
   border-radius: 1px;
+  line-height: $font-size-maim + $half-size;
+  padding-left: $font-size-maim;
+  padding-right: $font-size-maim;
+  
 }
 button:hover {
   border: 2px inset #fff;

@@ -40,11 +40,44 @@ const getScore = () => {
       (((endGameTime - startGameTime) / 1000) / numberOfBombs)
   );
   if (score > bestScore) setItem('bestScore', score);
-  return score;
+  setItem('score', score);
+  // return score;
 };
+const onOkBtnEvent = (event) => {
+  const { buttonId } = event.target.dataset;
+  event.target.classList.remove('hidden');
+  document.querySelector('.window-modal-overlay').classList.add('hidden');
+  console.log(buttonId);
+};
+
+function showOkBtn(buttonId) {
+  const okBtnElem = document.querySelector('.window-modal__btn');
+  console.log(okBtnElem);
+
+  okBtnElem.classList.remove('hidden');
+  okBtnElem.addEventListener('click', onOkBtnEvent);
+  okBtnElem.dataset.buttonId = buttonId;
+}
+
+function renderScore() {
+  document.querySelector('.window-modal-overlay').classList.remove('hidden');
+  const modalCcontentElem = document.querySelector('.window-modal__content');
+  modalCcontentElem.innerHTML = `<div class="window-modal__score">Your Score: ${getItem('score')}</div>
+  <div class="window-modal__best-score">Best Score: ${getItem('bestScore')}</div>`;
+  showOkBtn('yourWin');
+}
+
+function renderGameOver() {
+  document.querySelector('.window-modal-overlay').classList.remove('hidden');
+  showOkBtn('gameOver');
+  const modalCcontentElem = document.querySelector('.window-modal__content');
+  modalCcontentElem.innerHTML = '<div class="window-modal__score">Game Over</div>';
+}
 function youWin() {
-  console.log(`You win! \n ${JSON.stringify(getScore())}`);
-  alert(`You win! \n ${JSON.stringify(getScore())}`);
+  getScore();
+  console.log(`You win! \n ${getScore()} `);
+  renderScore();
+
   clearInterval(getItem('timerId'));
   removeGameFieldEventListener();
 }
@@ -52,12 +85,8 @@ function youWin() {
 export function gameOver() {
   openAllBombs();
   console.log('GameOver');
-  function sayGameOver() {
-    alert('Game over');
-  }
   clearInterval(getItem('timerId'));
-  setTimeout(sayGameOver, 1000);
-  clearInterval(getItem('timerId'));
+  setTimeout(renderGameOver, 1000);
   removeGameFieldEventListener();
   document.querySelector('.game-bar__smile').innerHTML = '&#128577;';
 }

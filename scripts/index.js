@@ -11,11 +11,8 @@ import { getItem, setItem } from './storage.js';
 import { getNeighboringBoxes } from './getNeighboringBoxes.js';
 import { onBoxClick, onBoxContextMenu } from './eventListeners.js';
 import { renderBombCounter, renderTimer } from './game-bar.js';
-// import { openEmptyBoxes } from './openEmptyBoxes.js';
-// import { renderNum } from './renderNum.js';
-// import { gameOver } from './game-control.js';
 
-function getNewGameField(widthField = 10, heightField = 15, numberOfBombs = 20) {
+function getNewGameField(widthField = 10, heightField = 10, numberOfBombs = 10) {
   setItem('widthField', widthField);
   setItem('heightField', heightField);
   setItem('numberOfBombs', numberOfBombs);

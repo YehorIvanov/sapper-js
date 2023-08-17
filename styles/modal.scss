@@ -9,11 +9,18 @@
     height: 100vh;
 }
 .window-modal {
-    height: 150px;
-    width: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // height: 150px;
+    // width: 150px;
     &__content {
-        margin: $double-size;
+        margin: $font-size-maim;
         
+    }
+    &__btn {
+        margin:   0 $font-size-maim $font-size-maim $font-size-maim;
     }
 
 }

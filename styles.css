@@ -119,6 +119,9 @@ button {
   color: black;
   padding: 0 0 4px;
   border-radius: 1px;
+  line-height: 27px;
+  padding-left: 18px;
+  padding-right: 18px;
 }
 
 button:hover {
@@ -156,11 +159,16 @@ button:active {
 }
 
 .window-modal {
-  height: 150px;
-  width: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .window-modal__content {
-  margin: 36px;
+  margin: 18px;
+}
+.window-modal__btn {
+  margin: 0 18px 18px 18px;
 }
 
 .page {
@@ -182,15 +190,16 @@ button:active {
 }
 
 .header {
-  height: 22px;
+  height: 22.5px;
   background: -webkit-linear-gradient(left, #08216b, #a5cef7);
   color: #fff;
   display: block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 2px;
+  margin: 2px;
   text-align: left;
+  width: 99%;
 }
 .header__icon {
   height: 18px;

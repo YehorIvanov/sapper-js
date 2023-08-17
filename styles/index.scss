@@ -2,7 +2,6 @@
 @import 'common.scss';
 @import 'modal.scss';
 
-// @import url('https://fonts.cdnfonts.com/css/seven-segment');
 
 .page {
   display: flex;
@@ -22,15 +21,17 @@
   color: #212529;
 }
 .header {
-  height: 22px;
+  height: $font-size-hight;
   background: -webkit-linear-gradient(left, #08216b, #a5cef7);
   color: #fff;
   display: block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 2px;
+  margin: 2px;
+  // padding: 2px;
   text-align: left;
+  width: 99%;
   // min-width: 150px;
 
   &__icon {
@@ -52,8 +53,8 @@
     margin: 0;
     list-style: none;
   }
-  &__item {
-  }
+  // &__item {
+  // }
   &__link {
     text-decoration: none;
     display: inline-block;
