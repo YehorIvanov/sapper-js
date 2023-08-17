@@ -15,7 +15,7 @@ import { renderBombCounter, renderTimer } from './game-bar.js';
 // import { renderNum } from './renderNum.js';
 // import { gameOver } from './game-control.js';
 
-function getNewGameField(widthField = 10, heightField = 15, numberOfBombs = 30) {
+function getNewGameField(widthField = 10, heightField = 15, numberOfBombs = 20) {
   setItem('widthField', widthField);
   setItem('heightField', heightField);
   setItem('numberOfBombs', numberOfBombs);
