@@ -82,9 +82,6 @@ function renderGameField() {
       carrentColum += 1
     ) {
       const carrentColumElem = document.createElement('div');
-      // if (gameField[carrentRow][carrentColum]) {
-      //   carrentColumElem.innerHTML = gameField[carrentRow][carrentColum];
-      // }
       carrentColumElem.dataset.row = carrentRow;
       carrentColumElem.dataset.colum = carrentColum;
       carrentColumElem.classList.add('game-field__box');
