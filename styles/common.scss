@@ -31,7 +31,7 @@ a {
 }
 ::-webkit-scrollbar-button:vertical:increment {
   width: 18px;
-  background: silver url(combo.png) no-repeat 50%;
+  background: silver url(img/combo.png) no-repeat 50%;
   height: 18px;
   margin: 1px 1px 1px 10px;
   -webkit-transform: rotateX(-90deg);
@@ -43,7 +43,7 @@ a {
 }
 ::-webkit-scrollbar-button:vertical:decrement {
   width: 11px;
-  background: silver url(comboup.png) no-repeat 50%;
+  background: silver url(img/comboup.png) no-repeat 50%;
   height: 16px;
   margin: 1px 1px 1px 10px;
   transform: rotateX(180deg);
@@ -72,7 +72,7 @@ a {
   display: none;
 }
 ::-webkit-scrollbar-button:horizontal:increment {
-  background: silver url(comboright.png) no-repeat 50%;
+  background: silver url(img/comboright.png) no-repeat 50%;
   -webkit-transform: rotateX(-90deg);
   transform: rotateX(-90deg);
   -webkit-transform: rotateY(-90deg);
@@ -87,7 +87,7 @@ a {
   border-shadow: 1px 1px #000;
 }
 ::-webkit-scrollbar-button:horizontal:decrement {
-  background: silver url(comboleft.png) no-repeat 50%;
+  background: silver url(img/comboleft.png) no-repeat 50%;
   transform: rotateX(180deg);
   -webkit-transform: rotateY(180deg);
 }
@@ -114,8 +114,8 @@ button {
   padding: 0 0 4px;
   border-radius: 1px;
   line-height: $font-size-maim + $half-size;
-  padding-left: $font-size-maim;
-  padding-right: $font-size-maim;
+  // padding-left: $font-size-maim;
+  // padding-right: $font-size-maim;
   
 }
 button:hover {
@@ -130,31 +130,14 @@ button:focus {
   color: #424242;
   box-shadow: -1px -1px #000 !important;
   outline: 0 !important;
-  background: url(background.bmp);
+  background: url(img/background.bmp);
 }
 button:active {
   border: 2px inset #fff !important;
   color: #424242;
   box-shadow: -1px -1px #000 !important;
   outline: 0 !important;
-  background: url(background.bmp);
+  background: url(img/background.bmp);
 }
 
-// .btn-primary {
-//   padding-left: 8px;
-//   padding-right: 8px;
-// }
-// button:focus {
-//   outline: 1px dotted;
-// }
-// .btn.disabled,
-// .btn:disabled {
-//   cursor: default;
-//   background-color: silver;
-//   border-style: outset;
-//   border-color: buttonface;
-//   border-right-color: #424242;
-//   border-bottom-color: #424242;
-//   color: grey;
-//   text-shadow: 1px 1px #fff;
-// }
+

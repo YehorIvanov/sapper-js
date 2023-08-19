@@ -13,14 +13,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    // height: 150px;
-    // width: 150px;
+    width: 200px;
+    &__header-text {
+        padding-left: $quarter-size;
+    }
     &__content {
         margin: $font-size-maim;
         
     }
     &__btn {
         margin:   0 $font-size-maim $font-size-maim $font-size-maim;
+        padding: 0 $font-size-maim;
     }
 
 }

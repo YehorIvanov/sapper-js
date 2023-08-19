@@ -21,7 +21,7 @@
   color: #212529;
 }
 .header {
-  height: $font-size-hight;
+  height: $font-size-maim * 1.4;
   background: -webkit-linear-gradient(left, #08216b, #a5cef7);
   color: #fff;
   display: block;
@@ -29,11 +29,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
   margin: 2px;
-  // padding: 2px;
   text-align: left;
   width: 99%;
-  // min-width: 150px;
-
   &__icon {
     height: $font-size-maim;
     width: $font-size-maim;
@@ -43,8 +40,8 @@
   background: silver;
   margin: 0;
   border: 1px outset $color-white;
-  height: 22px;
-  padding: 0 6px;
+  height: $font-size-maim * 1.75;
+  padding: 0 ;
   color: #212529;
   &__nav {
     display: flex;
@@ -54,12 +51,25 @@
     list-style: none;
   }
   // &__item {
+      
   // }
   &__link {
     text-decoration: none;
     display: inline-block;
-    padding-right: 9px;
+    padding: 2px;
+    padding-right: $quarter-size;
+    padding-left: $quarter-size;
     color: #212529;
+    &:hover {
+      border: solid;
+      border-width: 2px;
+      border-bottom-color: $border-color-dark;
+      border-right-color: $border-color-dark;
+      border-left-color: $border-color-light;
+      border-top-color: $border-color-light;
+      color: black;
+    }
+    
   }
 }
 .game {
