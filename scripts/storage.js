@@ -11,8 +11,100 @@ const carrentGame = {
   bestScore: null,
   score: null,
   level: null,
-  help: `Rules:
-The game is played on a square grid divided into cells. The number of cells can vary depending on the difficulty level of the game.
+  levels: [
+    {
+      level: 1,
+      widthField: 8,
+      heightField: 8,
+      numberOfBombs: 8,
+    },
+    {
+      level: 2,
+      widthField: 9,
+      heightField: 9,
+      numberOfBombs: 10,
+    },
+    {
+      level: 3,
+      widthField: 10,
+      heightField: 10,
+      numberOfBombs: 12,
+    },
+    {
+      level: 4,
+      widthField: 10,
+      heightField: 10,
+      numberOfBombs: 13,
+    },
+    {
+      level: 5,
+      widthField: 10,
+      heightField: 10,
+      numberOfBombs: 14,
+    },
+    {
+      level: 6,
+      widthField: 10,
+      heightField: 10,
+      numberOfBombs: 15,
+    },
+    {
+      level: 7,
+      widthField: 10,
+      heightField: 11,
+      numberOfBombs: 17,
+    },
+    {
+      level: 9,
+      widthField: 10,
+      heightField: 11,
+      numberOfBombs: 19,
+    },
+    {
+      level: 10,
+      widthField: 10,
+      heightField: 20,
+      numberOfBombs: 30,
+    },
+    {
+      level: 11,
+      widthField: 10,
+      heightField: 12,
+      numberOfBombs: 21,
+    },
+    {
+      level: 12,
+      widthField: 10,
+      heightField: 12,
+      numberOfBombs: 22,
+    },
+    {
+      level: 13,
+      widthField: 10,
+      heightField: 12,
+      numberOfBombs: 23,
+    },
+    {
+      level: 14,
+      widthField: 10,
+      heightField: 13,
+      numberOfBombs: 25,
+    },
+    {
+      level: 15,
+      widthField: 10,
+      heightField: 20,
+      numberOfBombs: 15,
+    },
+    {
+      level: 16,
+      widthField: 10,
+      heightField: 13,
+      numberOfBombs: 26,
+    },
+  ],
+  help: `Rules: 
+  The game is played on a square grid divided into cells. The number of cells can vary depending on the difficulty level of the game.
 Some cells on the grid contain mines. The objective of the player is to uncover all cells except those containing mines.
 Each cell can have one of three states: closed, open, or flagged. Initially, all cells are closed.
 The player can uncover cells by clicking on them. If a cell contains a mine, the player loses the game.
@@ -23,12 +115,6 @@ The game is won when all cells, except those containing mines, are uncovered. Th
 Typically, the game offers multiple difficulty levels based on the size of the grid and the number of mines. Larger grids and more mines make the game more challenging.`,
 };
 
-// export function setItem(key, value) {
-//   carrentGame[key] = value;
-// }
-// export function getItem(key) {
-//   return carrentGame[key];
-// }
 export const setItem = (key, value) => {
   localStorage.setItem(key, JSON.stringify({ [key]: value }));
 };

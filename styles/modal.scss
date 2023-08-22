@@ -13,13 +13,20 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 200px;
+    // width: 200px;
     &__header-text {
         padding-left: $quarter-size;
     }
     &__content {
         margin: $font-size-maim;
-        
+    }
+    &__help {
+        width: 300px;
+        height: 350px;
+        padding: $half-size;
+        overflow-x: none;
+        overflow-y: auto;
+
     }
     &__btn {
         margin:   0 $font-size-maim $font-size-maim $font-size-maim;

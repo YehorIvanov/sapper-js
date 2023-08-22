@@ -7,6 +7,7 @@
 
 import { getItem, setItem } from './storage.js';
 import { onBoxClick, onBoxContextMenu } from './eventListeners.js';
+import showModal from './modal.js';
 
 function openAllBombs() {
   const gameField = getItem('gameField');
@@ -41,50 +42,27 @@ const getScore = () => {
   );
   if (score > bestScore) setItem('bestScore', score);
   setItem('score', score);
-  // return score;
 };
-const onOkBtnEvent = (event) => {
-  const { buttonId } = event.target.dataset;
-  event.target.classList.remove('hidden');
-  document.querySelector('.window-modal-overlay').classList.add('hidden');
-  console.log(buttonId);
-};
-
-function showOkBtn(buttonId) {
-  const okBtnElem = document.querySelector('.window-modal__btn');
-  console.log(okBtnElem);
-
-  okBtnElem.classList.remove('hidden');
-  okBtnElem.addEventListener('click', onOkBtnEvent);
-  okBtnElem.dataset.buttonId = buttonId;
-}
 
 function renderScore() {
-  document.querySelector('.window-modal-overlay').classList.remove('hidden');
-  const modalCcontentElem = document.querySelector('.window-modal__content');
-  modalCcontentElem.innerHTML = `<div class="window-modal__score">Your Score: ${getItem('score')}</div>
-  <div class="window-modal__best-score">Best Score: ${getItem('bestScore')}</div>`;
-  showOkBtn('yourWin');
+  showModal(`<div class="window-modal__score">Your Score: ${getItem('score')}</div>
+  <div class="window-modal__best-score">Best Score: ${getItem('bestScore')}</div>`, 'yourWin');
 }
 
 function renderGameOver() {
-  document.querySelector('.window-modal-overlay').classList.remove('hidden');
-  showOkBtn('gameOver');
-  const modalCcontentElem = document.querySelector('.window-modal__content');
-  modalCcontentElem.innerHTML = '<div class="window-modal__score">Game Over</div>';
+  showModal('<div class="window-modal__score">Game Over</div>', 'gameOver');
 }
+
 function youWin() {
   getScore();
-  console.log(`You win! \n ${getScore()} `);
-  renderScore();
-
   clearInterval(getItem('timerId'));
   removeGameFieldEventListener();
+  renderScore();
+  document.querySelector('.game-bar__smile').innerHTML = '&#128526;';
 }
 
 export function gameOver() {
   openAllBombs();
-  console.log('GameOver');
   clearInterval(getItem('timerId'));
   setTimeout(renderGameOver, 1000);
   removeGameFieldEventListener();

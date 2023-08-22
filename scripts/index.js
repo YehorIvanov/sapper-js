@@ -9,7 +9,7 @@
 // eslint-disable-next-line import/extensions
 import { getItem, setItem } from './storage.js';
 import { getNeighboringBoxes } from './getNeighboringBoxes.js';
-import { onBoxClick, onBoxContextMenu } from './eventListeners.js';
+import { onBoxClick, onBoxContextMenu, onMenuClick } from './eventListeners.js';
 import { renderBombCounter, renderTimer } from './game-bar.js';
 
 function getNewGameField(widthField = 10, heightField = 10, numberOfBombs = 15) {
@@ -123,5 +123,11 @@ document
   .querySelector('.game-bar__smile')
   .addEventListener('click', onSmileClick);
 console.log(window.innerWidth);
+
+document.querySelector('.navbar')
+  .addEventListener('click', onMenuClick);
+
+localStorage.removeItem('levels');
+localStorage.removeItem('help');
 
 document.querySelector('.footer').innerHTML = window.innerWidth;
