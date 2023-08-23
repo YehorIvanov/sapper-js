@@ -13,10 +13,16 @@ const carrentGame = {
   level: null,
   levels: [
     {
-      level: 1,
+      level: 0,
       widthField: 8,
       heightField: 8,
       numberOfBombs: 8,
+    },
+    {
+      level: 1,
+      widthField: 8,
+      heightField: 8,
+      numberOfBombs: 9,
     },
     {
       level: 2,

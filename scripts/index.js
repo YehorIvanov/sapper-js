@@ -13,6 +13,7 @@ import { onBoxClick, onBoxContextMenu, onMenuClick } from './eventListeners.js';
 import { renderBombCounter, renderTimer } from './game-bar.js';
 
 function getNewGameField(widthField = 10, heightField = 10, numberOfBombs = 15) {
+  console.log(widthField, heightField, numberOfBombs);
   setItem('widthField', widthField);
   setItem('heightField', heightField);
   setItem('numberOfBombs', numberOfBombs);
@@ -102,8 +103,8 @@ const renderStartPosition = () => {
   ).style.backgroundImage = 'url("img/start.png")';
 };
 
-function newGame() {
-  getNewGameField();
+function newGame(widthField, heightField, numberOfBombs) {
+  getNewGameField(widthField, heightField, numberOfBombs);
   logGameFieldToConsole();
   renderGameField();
   renderStartPosition();
@@ -115,7 +116,12 @@ function newGame() {
 }
 
 function onSmileClick() {
-  newGame();
+  const level = +getItem('level');
+  const { widthField } = getItem('levels')[level];
+  const { heightField } = getItem('levels')[level];
+  const { numberOfBombs } = getItem('levels')[level];
+  console.log(level, widthField, heightField, numberOfBombs);
+  newGame(+widthField, +heightField, +numberOfBombs);
 }
 newGame();
 

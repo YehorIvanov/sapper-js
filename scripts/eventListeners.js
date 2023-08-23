@@ -8,7 +8,7 @@ import { renderNum } from './renderNum.js';
 import { checkGameStatus } from './game-control.js';
 import { renderBombCounter } from './game-bar.js';
 import showModal from './modal.js';
-import { renderLevelsTable } from './renderLevelsTable.js';
+import renderLevelsTable from './renderLevelsTable.js';
 
 export function onBoxClick(event) {
   const gameField = getItem('gameField');
@@ -36,7 +36,7 @@ export function onBoxContextMenu(event) {
   renderBombCounter();
 }
 export function onMenuClick(event) {
-  console.log(event.target.dataset.buttonId);
+  // console.log(event.target.dataset.buttonId);
   switch (event.target.dataset.buttonId) {
     case 'help':
       showModal(`<div class="window-modal__help">${getItem('help')}</div>`, 'closeHelp');

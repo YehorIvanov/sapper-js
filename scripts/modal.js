@@ -1,6 +1,9 @@
-function onOkBtnEvent(event) {
-  event.target.classList.remove('hidden');
+function onOkBtnEvent() {
+  const okBtnElem = document.querySelector('.window-modal__btn');
+  okBtnElem.removeEventListener('click', onOkBtnEvent);
+  okBtnElem.classList.add('hidden');
   document.querySelector('.window-modal-overlay').classList.add('hidden');
+  document.querySelector('.window-modal-content').innerHTML = '';
 }
 
 function showOkBtn(buttonId) {
