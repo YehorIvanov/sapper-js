@@ -26,7 +26,21 @@
         padding: $half-size;
         overflow-x: none;
         overflow-y: auto;
-
+    }
+    &__levels {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: $font-size-maim * 12;
+    }
+    &__level {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        width: $font-size-maim * 2;
+        height: $font-size-maim * 2;
+        color: blue;
     }
     &__btn {
         margin:   0 $font-size-maim $font-size-maim $font-size-maim;

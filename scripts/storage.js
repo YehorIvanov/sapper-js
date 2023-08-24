@@ -109,6 +109,7 @@ const carrentGame = {
       numberOfBombs: 26,
     },
   ],
+  passedLevels: [],
   help: `Rules: 
   The game is played on a square grid divided into cells. The number of cells can vary depending on the difficulty level of the game.
 Some cells on the grid contain mines. The objective of the player is to uncover all cells except those containing mines.

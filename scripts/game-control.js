@@ -59,6 +59,14 @@ function youWin() {
   removeGameFieldEventListener();
   renderScore();
   document.querySelector('.game-bar__smile').innerHTML = '&#128526;';
+  const carrentLevel = getItem('level');
+  const levelsTotal = getItem('levels').length - 1;
+  const passedLevels = getItem('passedLevels');
+  passedLevels.push(carrentLevel);
+  setItem('passedLevels', passedLevels);
+  if (carrentLevel < levelsTotal) {
+    setItem('level', carrentLevel + 1);
+  }
 }
 
 export function gameOver() {
