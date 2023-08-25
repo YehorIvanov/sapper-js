@@ -36,6 +36,10 @@
     height: $font-size-maim;
     width: $font-size-maim;
   }
+  &__level {
+    font-size: $font-size-low;
+    font-style: italic;
+  }
 }
 .navbar {
   background: silver;

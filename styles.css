@@ -188,7 +188,10 @@ button:active {
   cursor: pointer;
   width: 36px;
   height: 36px;
-  color: blue;
+  color: red;
+}
+.window-modal__level-passed {
+  color: darkblue;
 }
 .window-modal__btn {
   margin: 0 18px 18px 18px;
@@ -229,6 +232,10 @@ button:active {
 .header__icon {
   height: 18px;
   width: 18px;
+}
+.header__level {
+  font-size: 13.5px;
+  font-style: italic;
 }
 
 .navbar {

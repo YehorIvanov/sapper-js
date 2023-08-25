@@ -40,7 +40,10 @@
         cursor: pointer;
         width: $font-size-maim * 2;
         height: $font-size-maim * 2;
-        color: blue;
+        color: red;
+        &-passed {
+            color:  darkblue;
+        }
     }
     &__btn {
         margin:   0 $font-size-maim $font-size-maim $font-size-maim;

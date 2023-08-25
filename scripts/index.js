@@ -87,6 +87,8 @@ function renderGameField() {
     }
     gameFieldElem.append(carrentRowElem);
   }
+
+  document.querySelector('.header__level').innerHTML = `(Level: ${getItem('level')})`;
 }
 const renderStartPosition = () => {
   const gameField = getItem('gameField');
@@ -123,17 +125,20 @@ function onSmileClick() {
   console.log(level, widthField, heightField, numberOfBombs);
   newGame(+widthField, +heightField, +numberOfBombs);
 }
-newGame();
 
-document
-  .querySelector('.game-bar__smile')
-  .addEventListener('click', onSmileClick);
-console.log(window.innerWidth);
+document.addEventListener('DOMContentLoaded', () => {
+  newGame();
 
-document.querySelector('.navbar')
-  .addEventListener('click', onMenuClick);
+  document
+    .querySelector('.game-bar__smile')
+    .addEventListener('click', onSmileClick);
+  console.log(window.innerWidth);
 
-localStorage.removeItem('levels');
-localStorage.removeItem('help');
+  document.querySelector('.navbar')
+    .addEventListener('click', onMenuClick);
 
-document.querySelector('.footer').innerHTML = window.innerWidth;
+  localStorage.removeItem('levels');
+  // localStorage.removeItem('help');
+
+  document.querySelector('.footer').innerHTML = window.innerWidth;
+});

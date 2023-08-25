@@ -12,11 +12,16 @@ function renderLevelsTable() {
   const levelsDivElem = document.createElement('div');
   levelsDivElem.classList.add('window-modal__levels');
   const levels = getItem('levels');
+  const passedLevels = getItem('passedLevels');
+  console.log(passedLevels);
   levels.forEach((elem) => {
     const levelElem = document.createElement('div');
     levelElem.innerHTML = elem.level;
     levelElem.classList.add('window-modal__level');
     levelElem.dataset.level = elem.level;
+    if (passedLevels.includes(elem.level)) {
+      levelElem.classList.add('window-modal__level-passed');
+    }
     levelsDivElem.append(levelElem);
   });
   showModal(levelsDivElem.outerHTML, 'levelSelect');
