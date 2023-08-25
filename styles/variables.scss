@@ -21,3 +21,21 @@ $border-radius-main: 2px;
 $border-width-main: 3px;
 $border-color-dark: #424242;
 $border-color-light: $color-white;
+
+@mixin inset-border {
+  border-style: inset;
+  border-width: 2px;
+  border-top-color: $border-color-dark;
+  border-left-color: $border-color-dark;
+  border-right-color: $border-color-light;
+  border-bottom-color: $border-color-light;
+}
+
+@mixin outset-border {
+  border-style: outset;
+  border-width: 2px;
+  border-bottom-color: $border-color-dark;
+  border-right-color: $border-color-dark;
+  border-left-color: $border-color-light;
+  border-top-color: $border-color-light;
+}

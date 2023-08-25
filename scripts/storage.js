@@ -10,7 +10,7 @@ const carrentGame = {
   timerId: null,
   bestScore: null,
   score: null,
-  level: null,
+  level: 0,
   levels: [
     {
       level: 0,

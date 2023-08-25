@@ -12,12 +12,7 @@
 }
 
 .window {
-  border: solid;
-  border-width: 2px;
-  border-bottom-color: $border-color-dark;
-  border-right-color: $border-color-dark;
-  border-left-color: $border-color-light;
-  border-top-color: $border-color-light;
+@include outset-border;
   background: silver;
   color: #212529;
 }
@@ -32,22 +27,26 @@
   margin: 2px;
   text-align: left;
   width: 99%;
+
   &__icon {
     height: $font-size-maim;
     width: $font-size-maim;
   }
+
   &__level {
     font-size: $font-size-low;
     font-style: italic;
   }
+
 }
+
 .navbar {
-  background: silver;
   margin: 0;
   border: 1px outset $color-white;
   height: $font-size-maim * 1.75;
   padding: 0 ;
   color: #212529;
+
   &__nav {
     display: flex;
     flex-direction: row;
@@ -55,9 +54,7 @@
     margin: 0;
     list-style: none;
   }
-  // &__item {
-      
-  // }
+
   &__link {
     text-decoration: none;
     display: inline-block;
@@ -65,41 +62,30 @@
     padding-right: $quarter-size;
     padding-left: $quarter-size;
     color: #212529;
+
     &:hover {
-      border: solid;
-      border-width: 2px;
-      border-bottom-color: $border-color-dark;
-      border-right-color: $border-color-dark;
-      border-left-color: $border-color-light;
-      border-top-color: $border-color-light;
+    @include outset-border;
       color: black;
     }
     
   }
+
 }
+
 .game {
   margin: $half-size;
   margin-top: $quarter-size;
-  border-style: outset;
-  border-width: 3px;
-  border-bottom-color: $border-color-dark;
-  border-right-color: $border-color-dark;
-  border-left-color: $border-color-light;
-  border-top-color: $border-color-light;
+  @include outset-border;
+
   &__bar {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
     margin: $half-size;
-    border-style: inset;
-    border-width: 3px;
-    border-top-color: $border-color-dark;
-    border-left-color: $border-color-dark;
-    border-right-color: $border-color-light;
-    border-bottom-color: $border-color-light;
+    @include inset-border;
   }
+
   .game-bar {
     &__bomb-counter {
       background-color: black;
@@ -107,35 +93,26 @@
       display: flex;
       flex-direction: row;
       padding: 1px;
-      border-style: inset;
-      border-width: 3px;
-      border-top-color: $border-color-dark;
-      border-left-color: $border-color-dark;
-      border-right-color: $border-color-light;
-      border-bottom-color: $border-color-light;
       position: relative;
+      @include inset-border;
     }
+
     &__bomb-num {
       height: $double-size;
       width: $font-size-maim;
       background-size: cover;
       margin: 4px;
-
       position: relative;
       z-index: 3;
     }
+
     &__timer {
       background-color: black;
       margin: $quarter-size;
       display: flex;
       flex-direction: row;
       padding: 1px;
-      border-style: inset;
-      border-width: 3px;
-      border-top-color: $border-color-dark;
-      border-left-color: $border-color-dark;
-      border-right-color: $border-color-light;
-      border-bottom-color: $border-color-light;
+      @include inset-border;
       position: relative;
     }
     &__timer-num {
@@ -151,59 +128,39 @@
       width: $double-size + $quarter-size;
       height: $double-size + $quarter-size;
       font-size: $font-size-hight;
-
-      border-style: outset;
-      border-width: 3px;
-      border-bottom-color: $border-color-dark;
-      border-right-color: $border-color-dark;
-      border-left-color: $border-color-light;
-      border-top-color: $border-color-light;
+      @include outset-border;
     }
   }
   .game-field {
     margin: $half-size;
-    border-style: outset;
-    border: solid;
-    border-width: 3px;
-    border-top-color: $border-color-dark;
-    border-left-color: $border-color-dark;
-    border-right-color: $border-color-light;
-    border-bottom-color: $border-color-light;
+    @include inset-border;
 
     &__row {
-      //   height: $font-size-hight + ($border-width-main * 2);
       display: flex;
     }
+
     &__box {
       height: $font-size-hight;
       width: $font-size-hight;
-      font-size: $font-size-low;
       background-size: cover;
-
       display: inline-flex;
       align-items: center;
       justify-content: center;
-
       font-size: $font-size-maim;
       font-weight: 900;
+      @include outset-border;
 
-      border-style: outset;
-      border: solid;
-      border-width: 3px;
-      border-bottom-color: $border-color-dark;
-      border-right-color: $border-color-dark;
-      border-left-color: $border-color-light;
-      border-top-color: $border-color-light;
-      //   display: inline-block;
       &-open {
-        // border: 3px solid $background-color-main;
         border: 1px dotted gray;
-        width: $font-size-hight + 4px;
-        height: $font-size-hight + 4px;
+        width: $font-size-hight + 2px;
+        height: $font-size-hight + 2px;
         background-image: none;
       }
+
     }
+
   }
+
 }
 .footer {
   height: $font-size-hight;
@@ -212,9 +169,8 @@
   position: fixed;
   bottom: 0;
   z-index: 3;
-
   border-style: outset;
-  border-width: 3px;
+  border-width: 2cap;
   border-top-color: $border-color-light;
 
   display: flex;

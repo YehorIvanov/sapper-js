@@ -89,6 +89,7 @@ function renderGameField() {
   }
 
   document.querySelector('.header__level').innerHTML = `(Level: ${getItem('level')})`;
+  document.querySelector('.game-bar__smile').innerHTML = '&#128526;';
 }
 const renderStartPosition = () => {
   const gameField = getItem('gameField');
@@ -127,6 +128,7 @@ function onSmileClick() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  localStorage.removeItem('levels');
   newGame();
 
   document

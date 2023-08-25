@@ -207,7 +207,7 @@ button:active {
 }
 
 .window {
-  border: solid;
+  border-style: outset;
   border-width: 2px;
   border-bottom-color: #424242;
   border-right-color: #424242;
@@ -239,7 +239,6 @@ button:active {
 }
 
 .navbar {
-  background: silver;
   margin: 0;
   border: 1px outset #fff;
   height: 31.5px;
@@ -262,7 +261,7 @@ button:active {
   color: #212529;
 }
 .navbar__link:hover {
-  border: solid;
+  border-style: outset;
   border-width: 2px;
   border-bottom-color: #424242;
   border-right-color: #424242;
@@ -275,7 +274,7 @@ button:active {
   margin: 9px;
   margin-top: 4.5px;
   border-style: outset;
-  border-width: 3px;
+  border-width: 2px;
   border-bottom-color: #424242;
   border-right-color: #424242;
   border-left-color: #fff;
@@ -288,7 +287,7 @@ button:active {
   align-items: center;
   margin: 9px;
   border-style: inset;
-  border-width: 3px;
+  border-width: 2px;
   border-top-color: #424242;
   border-left-color: #424242;
   border-right-color: #fff;
@@ -300,13 +299,13 @@ button:active {
   display: flex;
   flex-direction: row;
   padding: 1px;
+  position: relative;
   border-style: inset;
-  border-width: 3px;
+  border-width: 2px;
   border-top-color: #424242;
   border-left-color: #424242;
   border-right-color: #fff;
   border-bottom-color: #fff;
-  position: relative;
 }
 .game .game-bar__bomb-num {
   height: 36px;
@@ -323,7 +322,7 @@ button:active {
   flex-direction: row;
   padding: 1px;
   border-style: inset;
-  border-width: 3px;
+  border-width: 2px;
   border-top-color: #424242;
   border-left-color: #424242;
   border-right-color: #fff;
@@ -343,7 +342,7 @@ button:active {
   height: 40.5px;
   font-size: 22.5px;
   border-style: outset;
-  border-width: 3px;
+  border-width: 2px;
   border-bottom-color: #424242;
   border-right-color: #424242;
   border-left-color: #fff;
@@ -351,9 +350,8 @@ button:active {
 }
 .game .game-field {
   margin: 9px;
-  border-style: outset;
-  border: solid;
-  border-width: 3px;
+  border-style: inset;
+  border-width: 2px;
   border-top-color: #424242;
   border-left-color: #424242;
   border-right-color: #fff;
@@ -365,7 +363,6 @@ button:active {
 .game .game-field__box {
   height: 22.5px;
   width: 22.5px;
-  font-size: 13.5px;
   background-size: cover;
   display: inline-flex;
   align-items: center;
@@ -373,8 +370,7 @@ button:active {
   font-size: 18px;
   font-weight: 900;
   border-style: outset;
-  border: solid;
-  border-width: 3px;
+  border-width: 2px;
   border-bottom-color: #424242;
   border-right-color: #424242;
   border-left-color: #fff;
@@ -382,8 +378,8 @@ button:active {
 }
 .game .game-field__box-open {
   border: 1px dotted gray;
-  width: 26.5px;
-  height: 26.5px;
+  width: 24.5px;
+  height: 24.5px;
   background-image: none;
 }
 
@@ -395,7 +391,7 @@ button:active {
   bottom: 0;
   z-index: 3;
   border-style: outset;
-  border-width: 3px;
+  border-width: 2cap;
   border-top-color: #fff;
   display: flex;
   flex-direction: row;
