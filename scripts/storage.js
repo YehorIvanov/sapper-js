@@ -108,6 +108,30 @@ const carrentGame = {
       heightField: 13,
       numberOfBombs: 26,
     },
+    {
+      level: 17,
+      widthField: 10,
+      heightField: 15,
+      numberOfBombs: 27,
+    },
+    {
+      level: 18,
+      widthField: 10,
+      heightField: 16,
+      numberOfBombs: 29,
+    },
+    {
+      level: 19,
+      widthField: 10,
+      heightField: 20,
+      numberOfBombs: 30,
+    },
+    {
+      level: 20,
+      widthField: 10,
+      heightField: 25,
+      numberOfBombs: 70,
+    },
   ],
   passedLevels: [],
   help: `Rules: 
