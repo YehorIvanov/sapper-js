@@ -13,7 +13,6 @@ function renderLevelsTable() {
   levelsDivElem.classList.add('window-modal__levels');
   const levels = getItem('levels');
   const passedLevels = getItem('passedLevels');
-  console.log(passedLevels);
   levels.forEach((elem) => {
     const levelElem = document.createElement('div');
     levelElem.innerHTML = elem.level;

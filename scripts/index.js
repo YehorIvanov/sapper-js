@@ -12,8 +12,7 @@ import { getNeighboringBoxes } from './getNeighboringBoxes.js';
 import { onBoxClick, onBoxContextMenu, onMenuClick } from './eventListeners.js';
 import { renderBombCounter, renderTimer } from './game-bar.js';
 
-function getNewGameField(widthField = 10, heightField = 10, numberOfBombs = 15) {
-  console.log(widthField, heightField, numberOfBombs);
+function getNewGameField(widthField = 9, heightField = 9, numberOfBombs = 9) {
   setItem('widthField', widthField);
   setItem('heightField', heightField);
   setItem('numberOfBombs', numberOfBombs);
@@ -52,13 +51,13 @@ function addNumbersToGameField() {
   setItem('gameField', gameField);
 }
 
-const logGameFieldToConsole = () => {
-  const gameField = getItem('gameField');
-  console.log('\n');
-  gameField.forEach((line) => {
-    console.log(line.reduce((acc, cell) => `${acc}| ${cell} `, ''));
-  });
-};
+// const logGameFieldToConsole = () => {
+//   const gameField = getItem('gameField');
+//   console.log('\n');
+//   gameField.forEach((line) => {
+//     console.log(line.reduce((acc, cell) => `${acc}| ${cell} `, ''));
+//   });
+// };
 
 function renderGameField() {
   const gameField = getItem('gameField');
@@ -108,7 +107,7 @@ const renderStartPosition = () => {
 
 function newGame(widthField, heightField, numberOfBombs) {
   getNewGameField(widthField, heightField, numberOfBombs);
-  logGameFieldToConsole();
+  // logGameFieldToConsole();
   renderGameField();
   renderStartPosition();
   renderBombCounter();
@@ -123,24 +122,23 @@ function onSmileClick() {
   const { widthField } = getItem('levels')[level];
   const { heightField } = getItem('levels')[level];
   const { numberOfBombs } = getItem('levels')[level];
-  console.log(level, widthField, heightField, numberOfBombs);
-  newGame(+widthField, +heightField, +numberOfBombs);
+  if (window.innerWidth > window.innerHeight) {
+    newGame(+heightField, +widthField, +numberOfBombs);
+  } else {
+    newGame(+widthField, +heightField, +numberOfBombs);
+  }
+  // console.log(`W ${widthField}  H ${heightField} NoB  ${numberOfBombs}`);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   localStorage.removeItem('levels');
-  newGame();
 
   document
     .querySelector('.game-bar__smile')
     .addEventListener('click', onSmileClick);
-  console.log(window.innerWidth);
 
   document.querySelector('.navbar')
     .addEventListener('click', onMenuClick);
 
-  localStorage.removeItem('levels');
-  // localStorage.removeItem('help');
-
-  document.querySelector('.footer').innerHTML = window.innerWidth;
+  document.querySelector('.game-bar__smile').dispatchEvent(new Event('click'));
 });

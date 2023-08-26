@@ -25,13 +25,14 @@ export function onBoxClick(event) {
 
 export function onBoxContextMenu(event) {
   event.preventDefault();
+  let bombCounter = getItem('bombCounter');
   if (event.target.style.backgroundImage === 'url("img/flag.png")') {
     event.target.style.backgroundImage = '';
+    if (bombCounter > 0) bombCounter += 1;
   } else {
     event.target.style.backgroundImage = 'url("img/flag.png")';
+    if (bombCounter > 0) bombCounter -= 1;
   }
-  let bombCounter = getItem('bombCounter');
-  if (bombCounter > 0) bombCounter -= 1;
   setItem('bombCounter', bombCounter);
   renderBombCounter();
 }
