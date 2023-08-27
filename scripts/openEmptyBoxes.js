@@ -1,9 +1,5 @@
-/* eslint-disable import/no-cycle */
-/* eslint-disable prefer-const */
-/* eslint-disable import/no-mutable-exports */
-/* eslint-disable import/extensions */
 import { getNeighboringBoxes } from './getNeighboringBoxes.js';
-import { renderNum } from './renderNum.js';
+import renderNum from './renderNum.js';
 import { getItem } from './storage.js';
 
 function openBox(row, colum) {
@@ -33,4 +29,4 @@ export const openEmptyBoxes = (row, colum) => {
     }
   }
 };
-// export default openEmptyBoxes;
+

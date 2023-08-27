@@ -12,10 +12,6 @@ body {
   padding-bottom: 28px;
 }
 
-a {
-  color: #2d49eb;
-}
-
 ::-webkit-scrollbar {
   width: 12px;
 }
@@ -110,11 +106,13 @@ a {
 }
 
 button {
-  border-width: 2px;
   border-style: outset;
-  border-color: buttonface;
-  border-right-color: #424242;
+  border-width: 2px;
   border-bottom-color: #424242;
+  border-right-color: #424242;
+  border-left-color: #fff;
+  border-top-color: #fff;
+  border-color: buttonface;
   background: silver;
   color: black;
   padding: 0 0 4px;

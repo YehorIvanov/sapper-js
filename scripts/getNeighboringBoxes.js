@@ -1,7 +1,5 @@
-/* eslint-disable import/extensions */
 import { getItem } from './storage.js';
 
-// eslint-disable-next-line import/prefer-default-export
 export const getNeighboringBoxes = (row, column, contain = null) => {
   const neighbouringBoxes = [
     [-1, -1],

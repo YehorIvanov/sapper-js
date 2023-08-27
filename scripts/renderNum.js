@@ -1,10 +1,9 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable import/extensions */
-/* eslint-disable import/prefer-default-export */
 import { getItem } from './storage.js';
 import { gameOver } from './game-control.js';
 
-export function renderNum(row, colum) {
+function renderNum(row, colum) {
   const gameField = getItem('gameField');
   const boxElem = document.querySelector(
     `div[data-row="${row}"][data-colum="${colum}"].game-field__box`,
@@ -45,4 +44,4 @@ export function renderNum(row, colum) {
   }
 }
 
-// export default renderNum;
+export default renderNum;

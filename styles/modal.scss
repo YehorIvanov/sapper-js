@@ -13,13 +13,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    // width: 200px;
+
     &__header-text {
         padding-left: $quarter-size;
     }
+
     &__content {
         margin: $font-size-maim;
     }
+
     &__help {
         width: 300px;
         height: 350px;
@@ -27,12 +29,14 @@
         overflow-x: none;
         overflow-y: auto;
     }
+
     &__levels {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         width: $font-size-maim * 12;
     }
+
     &__level {
         display: flex;
         align-items: center;
@@ -45,6 +49,7 @@
             color:  darkblue;
         }
     }
+    
     &__btn {
         margin:   0 $font-size-maim $font-size-maim $font-size-maim;
         padding: 0 $font-size-maim;

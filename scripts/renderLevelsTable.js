@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import { getItem, setItem } from './storage.js';
 import showModal from './modal.js';
 

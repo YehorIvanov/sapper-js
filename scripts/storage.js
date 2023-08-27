@@ -1,4 +1,3 @@
-// storage
 const carrentGame = {
   widthField: 10,
   heightField: 10,

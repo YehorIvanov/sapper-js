@@ -1,5 +1,3 @@
-/* eslint-disable import/no-cycle */
-/* eslint-disable import/extensions */
 import { getItem, setItem } from './storage.js';
 import { gameOver } from './game-control.js';
 

@@ -1,10 +1,3 @@
-/* eslint-disable implicit-arrow-linebreak */
-/* eslint-disable comma-dangle */
-/* eslint-disable operator-linebreak */
-/* eslint-disable import/no-cycle */
-/* eslint-disable import/extensions */
-/* eslint-disable import/prefer-default-export */
-
 import { getItem, setItem } from './storage.js';
 import { onBoxClick, onBoxContextMenu } from './eventListeners.js';
 import showModal from './modal.js';

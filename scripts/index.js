@@ -1,12 +1,3 @@
-/* eslint-disable function-paren-newline */
-/* eslint-disable implicit-arrow-linebreak */
-/* eslint-disable default-case */
-/* eslint-disable import/extensions */
-/* eslint-disable operator-linebreak */
-/* eslint-disable no-use-before-define */
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-console */
-// eslint-disable-next-line import/extensions
 import { getItem, setItem } from './storage.js';
 import { getNeighboringBoxes } from './getNeighboringBoxes.js';
 import { onBoxClick, onBoxContextMenu, onMenuClick } from './eventListeners.js';
@@ -127,7 +118,6 @@ function onSmileClick() {
   } else {
     newGame(+widthField, +heightField, +numberOfBombs);
   }
-  // console.log(`W ${widthField}  H ${heightField} NoB  ${numberOfBombs}`);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
